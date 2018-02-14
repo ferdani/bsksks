@@ -4,7 +4,6 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 
-
 void AnalyserDBsKsKs::Loop()
 {
 //   In a ROOT session, you can do:
