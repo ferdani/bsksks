@@ -59,10 +59,10 @@ void AnalyzerDBsKsKs::Loop(){
 											  
 											  if(pip_isMuon==0 && pim_isMuon==0 && Kp_isMuon==0 && Km_isMuon == 0){
 												  
-													kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_E);
-													kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_E);
-													piplus.SetPxPyPzE(Pip_PX,Pip_PY,Pip_PZ,Pip_E);
-													piminus.SetPxPyPzE(Pim_PX,Pim_PY,Pim_PZ,Pim_E);
+													kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+													kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+													piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+													piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
 										
 													//calculo masa invariante de los cuatro cuerpos
 													
