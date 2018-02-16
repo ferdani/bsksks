@@ -1,4 +1,4 @@
-#define events_cxx
+#define DecayTree_cxx
 #include "AnalyzerDBsKsKs.h"
 #include <TH2.h>
 #include <TStyle.h>
@@ -59,10 +59,10 @@ void AnalyzerDBsKsKs::Loop(){
 											  
 											  if(pip_isMuon==0 && pim_isMuon==0 && Kp_isMuon==0 && Km_isMuon == 0){
 												  
-													kplus.SetPxPyPzM(Kp_PX,Kp_PY,Kp_PZ,Kp_M);
-													kminus.SetPxPyPzM(Km_PX,Km_PY,Km_PZ,Km_M);
-													piplus.SetPxPyPzM(Pip_PX,Pip_PY,Pip_PZ,Pip_M);
-													piminus.SetPxPyPzM(Pim_PX,Pim_PY,Pim_PZ,Pim_M);
+													kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_E);
+													kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_E);
+													piplus.SetPxPyPzE(Pip_PX,Pip_PY,Pip_PZ,Pip_E);
+													piminus.SetPxPyPzE(Pim_PX,Pim_PY,Pim_PZ,Pim_E);
 										
 													//calculo masa invariante de los cuatro cuerpos
 													

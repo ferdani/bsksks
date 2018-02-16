@@ -5,8 +5,8 @@
 // found on file: DTT_2016_Reco16Strip28_Down_BHADRON.root
 //////////////////////////////////////////////////////////
 
-#ifndef events_h
-#define events_h 1
+#ifndef DecayTree_h
+#define DecayTree_h 1
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -1386,7 +1386,7 @@ AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample) : fChain(0) {
   if (!f || !f->IsOpen()) {
     f = new TFile("Samples/" + sampleName + ".root");
   }
-  f->GetObject("events",tree);
+  f->GetObject("DecayTree",tree);
 
   Init(tree);
 }
