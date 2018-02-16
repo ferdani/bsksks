@@ -1376,17 +1376,28 @@ public :
 #endif
 
 #ifdef AnalyzerDBsKsKs_cxx
-AnalyzerDBsKsKs::AnalyzerDBsKsKs(TTree *tree) : fChain(0) 
-{
+AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample) : fChain(0) {
+  TTree *tree; sampleName = sample;
+  TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("Samples/" + sampleName  + ".root");
+  if (!f || !f->IsOpen()) {
+    f = new TFile("Samples/" + sampleName + ".root");
+  }
+  f->GetObject("events",tree);
+
+  Init(tree);
+}
+
+//AnalyzerDBsKsKs::AnalyzerDBsKsKs(TTree *tree) : fChain(0) 
+//{
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
-   if (tree == 0) {
-      TFile *f = TFile::Open("/home3/daniel.fernandez/Arboles/DTT_2016_Reco16Strip28_Down_BHADRON.root");
-      TDirectory * dir = (TDirectory*)f->Get("Bs2KpiKpi");
-      tree = (TTree*) f->Get("Bs2KpiKpi/DecayTree");
-   }
-   Init(tree);
-}
+   //if (tree == 0) {
+      //TFile *f = TFile::Open("/home3/daniel.fernandez/Arboles/DTT_2016_Reco16Strip28_Down_BHADRON.root");
+      //TDirectory * dir = (TDirectory*)f->Get("Bs2KpiKpi");
+      //tree = (TTree*) f->Get("Bs2KpiKpi/DecayTree");
+   //}
+   //Init(tree);
+//}
 
 AnalyzerDBsKsKs::~AnalyzerDBsKsKs()
 {

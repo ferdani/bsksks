@@ -67,7 +67,7 @@ void AnalyzerDBsKsKs::Loop(){
 													//calculo masa invariante de los cuatro cuerpos
 													
 													Mkpikpi=(kplus+piminus+kminus+piplus).M();
-													H_InvariantMass->Fill(Mkpikpi, EventWeight);
+													H_InvariantMass->Fill(Mkpikpi);
 													
 												}
 											}
