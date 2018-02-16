@@ -69,7 +69,6 @@ void AnalyzerDBsKsKs::Loop(){
 													Mkpikpi=(kplus+piminus+kminus+piplus).M();
 													H_InvariantMass->Fill(Mkpikpi, EventWeight);
 													
-													}
 												}
 											}
 										}
@@ -80,8 +79,8 @@ void AnalyzerDBsKsKs::Loop(){
 					}
 				}
 			}
-		}   
-	}
+		}
+	}   
 }
 
 void AnalyzerDBsKsKs::WriteHistos(){
