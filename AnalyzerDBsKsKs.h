@@ -1385,7 +1385,7 @@ AnalyzerDBsKsKs::AnalyzerDBsKsKs(TTree *tree) : fChain(0)
       if (!f || !f->IsOpen()) {
          f = new TFile("DTT_2016_Reco16Strip28_Down_BHADRON.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("DTT_2016_Reco16Strip28_Down_BHADRON.root:/Bs2KpiKpi");
+      TDirectory * dir = (TDirectory*)f->Get("Bs2KpiKpi");
       dir->GetObject("DecayTree",tree);
 
    }
