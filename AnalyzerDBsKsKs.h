@@ -1357,7 +1357,7 @@ public :
    TBranch        *b_nMuonTracks;   //!
    TBranch        *b_StrippingBs2K0stK0stNominalLineDecision;   //!
 
-   AnalyzerDBsKsKs(TString sampleName);
+   AnalyzerDBsKsKs(TString sampleNameRoot, TString sampleName);
    virtual ~AnalyzerDBsKsKs();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
@@ -1368,13 +1368,13 @@ public :
    virtual void     Show(Long64_t entry = -1);
    void WriteHistos();
 
+   TString sampleNameRoot;
    TString sampleName;
    TFile* out = NULL;
 };
 
-
-AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample) : fChain(0) {
-  TTree *tree; sampleName = sample;
+AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample1, TString sample2) : fChain(0) {
+  TTree *tree; sampleNameRoot = sample1; sampleName = sample2;
   TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("Samples/" + sampleName  + ".root");
   if (!f || !f->IsOpen()) {
     f = new TFile("Samples/" + sampleName + ".root");
@@ -1383,18 +1383,6 @@ AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample) : fChain(0) {
 
   Init(tree);
 }
-
-//AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample) : fChain(0) 
-//{
-// if parameter tree is not specified (or zero), connect the file
-// used to generate this class and read the Tree.
-   //if (tree == 0) {
-      //TFile *f = TFile::Open("/home3/daniel.fernandez/Arboles/DTT_2016_Reco16Strip28_Down_BHADRON.root");
-      //TDirectory * dir = (TDirectory*)f->Get("Bs2KpiKpi");
-      //tree = (TTree*) f->Get("Bs2KpiKpi/DecayTree");
-   //}
-   //Init(tree);
-//}
 
 AnalyzerDBsKsKs::~AnalyzerDBsKsKs(){
 // Destructor
