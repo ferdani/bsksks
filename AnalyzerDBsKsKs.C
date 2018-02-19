@@ -5,7 +5,7 @@
 #include <TCanvas.h>
 
 //histogramas
-TH1F* H_InvariantMass = new TH1F("H_InvMass", "Invariant Mass kpikpi", 30, 0, 1200);
+TH1F* H_InvariantMass = new TH1F("H_InvMass", "Invariant Mass kpikpi", 100, 4700, 6000);
 
 void AnalyzerDBsKsKs::Loop(){
 //   In a ROOT session, you can do:
@@ -23,7 +23,6 @@ void AnalyzerDBsKsKs::Loop(){
 
 //inicializo las variables:
    Float_t Mkpikpi = 0.0;	
-
 
 //constuyendo el loop
    if (fChain == 0) return;

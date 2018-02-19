@@ -1,10 +1,3 @@
-//////////////////////////////////////////////////////////
-// This class has been automatically generated on
-// Tue Feb 13 19:15:24 2018 by ROOT version 5.34/36
-// from TTree DecayTree/DecayTree
-// found on file: DTT_2016_Reco16Strip28_Down_BHADRON.root
-//////////////////////////////////////////////////////////
-
 #ifndef DecayTree_h
 #define DecayTree_h 1
 
