@@ -68,6 +68,8 @@ void AnalyzerDBsKsKs::Loop(){
 													Mkpikpi=(kplus+piminus+kminus+piplus).M();
 													H_InvariantMass->Fill(Mkpikpi);
 													
+													
+													cout << (jentry/nentries)*100 <<"%" << endl;
 												}
 											}
 										}
@@ -85,7 +87,7 @@ void AnalyzerDBsKsKs::Loop(){
 void AnalyzerDBsKsKs::WriteHistos(){
   TString outputDir = "./Histograms";
   gSystem->mkdir(outputDir, true);
-  out = new TFile(outputDir + "/Histos_" + sampleName + ".root", "RECREATE");
+  out = new TFile(outputDir + "/Histos_" + sampleNameRoot + ".root", "RECREATE");
   
   H_InvariantMass->Write();
   out->Close();

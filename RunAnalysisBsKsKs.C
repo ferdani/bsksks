@@ -5,7 +5,7 @@ const Int_t   nSamples = 1;
 const Int_t   nsamples = 1;
 
 const TString SamplesRoot[nsamples] = {"DTT_2016_Reco16Strip28_Down_BHADRON"};
-const TString Samples[nSamples] = {"DecayTree"};
+const TString Samples[nSamples] = {"Bs2KpiKpi/DecayTree"};
 
 void RunAnalysisBsKsKs(TString sampleNameRoot, TString sampleName);
 
