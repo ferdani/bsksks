@@ -34,7 +34,7 @@ void AnalyzerDBsKsKs::Loop(){
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
-      
+	  cout << setprecision(4) << jentry*100./nentries << " %" << endl;
       //selección:
       if(pip_PT>500 && Km_PT>500 && pim_PT>500 && Kp_PT>500){
 		  
@@ -68,8 +68,6 @@ void AnalyzerDBsKsKs::Loop(){
 													Mkpikpi=(kplus+piminus+kminus+piplus).M();
 													H_InvariantMass->Fill(Mkpikpi);
 													
-													
-													cout << (jentry/nentries)*100 <<"%" << endl;
 												}
 											}
 										}
