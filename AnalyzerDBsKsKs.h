@@ -1375,11 +1375,11 @@ public :
 
 AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample1, TString sample2) : fChain(0) {
   TTree *tree; sampleNameRoot = sample1; sampleName = sample2;
-  TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("Samples/" + sampleName  + ".root");
+  TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/home3/daniel.fernandez/Arboles/" + sampleNameRoot  + ".root");
   if (!f || !f->IsOpen()) {
     f = new TFile("Samples/" + sampleName + ".root");
   }
-  f->GetObject("DecayTree",tree);
+  f->GetObject("Bs2KpiKpi/" + sampleName ,tree);
 
   Init(tree);
 }
