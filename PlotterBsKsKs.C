@@ -21,7 +21,7 @@ TH1F* loadHistogram(TString sampleNameRoot, TString var){
   return h;
 }
 
-void plotter(TString var){
+void PlotterBsKsKs(TString var){
   TH1F* down  = loadHistogram("DTT_2016_Reco16Strip28_Down_BHADRON",       var);
   TH1F* up = loadHistogram("DTT_2016_Reco16Strip28_Up_BHADRON",      var);
 
