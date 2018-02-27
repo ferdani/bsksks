@@ -1366,6 +1366,7 @@ public :
    virtual void     Loop();
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
+   virtual void     printProgBar;
    void WriteHistos();
 
    TString sampleNameRoot;
@@ -2105,4 +2106,23 @@ Int_t AnalyzerDBsKsKs::Cut(Long64_t entry){
 // returns -1 otherwise.
    return 1;
 }
+
+void AnalyzerDBsKsKs::printProgBar( int percent ){
+  std::string bar;
+
+  for(int i = 0; i < 50; i++){
+    if( i < (percent/2)){
+      bar.replace(i,1,"=");
+    }else if( i == (percent/2)){
+      bar.replace(i,1,">");
+    }else{
+      bar.replace(i,1," ");
+    }
+  }
+
+  std::cout<< "\r" "[" << bar << "] ";
+  std::cout.width( 3 );
+  std::cout<< percent << "%     " << std::flush;
+}
+
 #endif 
