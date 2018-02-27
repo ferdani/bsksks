@@ -31,7 +31,7 @@ void AnalyzerDBsKsKs::Loop(){
    Long64_t nentries = fChain->GetEntriesFast();
 
    Long64_t nbytes = 0, nb = 0;
-   for (Long64_t jentry=0; jentry<nentries;jentry++) {
+   for (Long64_t jentry=0; jentry<nentries;++jentry) {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
@@ -80,7 +80,9 @@ void AnalyzerDBsKsKs::Loop(){
 				}
 			}
 		}
-	}   
+	}
+cout << endl;	
+std::cout<< "100" << "%   ¡Complete!  " << std::flush << "\r" << endl;   
 }
 
 void AnalyzerDBsKsKs::WriteHistos(){

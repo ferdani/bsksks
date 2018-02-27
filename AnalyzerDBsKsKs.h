@@ -1366,7 +1366,7 @@ public :
    virtual void     Loop();
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
-   virtual void     printProgBar(int percent);
+   virtual void     printProgBar(Long64_t percent);
    void WriteHistos();
 
    TString sampleNameRoot;
@@ -2107,7 +2107,7 @@ Int_t AnalyzerDBsKsKs::Cut(Long64_t entry){
    return 1;
 }
 
-void AnalyzerDBsKsKs::printProgBar( int percent ){
+void AnalyzerDBsKsKs::printProgBar(Long64_t percent ){
   std::string bar;
 
   for(int i = 0; i < 50; i++){
