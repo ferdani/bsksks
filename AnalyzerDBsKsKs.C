@@ -21,7 +21,12 @@ void AnalyzerDBsKsKs::Loop(){
 	TLorentzVector kminus = TLorentzVector(0,0,0,0);
 	TLorentzVector piplus = TLorentzVector(0,0,0,0);
 	TLorentzVector piminus = TLorentzVector(0,0,0,0);
-
+	
+    // ----- Timer ---------------------------------------------------------------
+    TStopwatch timer;
+    timer.Start();
+    // ---------------------------------------------------------------------------
+    
 //inicializo las variables:
    Float_t Mkpikpi = 0.0;	
 
@@ -82,7 +87,16 @@ void AnalyzerDBsKsKs::Loop(){
 		}
 	}
 cout << endl;	
-std::cout<< "100" << "%   ¡Complete!  " << std::flush << "\r" << endl;   
+std::cout<< "100" << "%   ¡Complete!  " << std::flush << "\r" << endl;
+
+// ----- Finish --------------------------------------------------------------
+timer.Stop();
+Double_t rtime = timer.RealTime();
+Double_t ctime = timer.CpuTime();
+cout << endl;
+cout << "Macro finished succesfully." << endl;
+cout << "Real time " << rtime << " s, CPU time " << ctime << " s" << endl;
+// ---------------------------------------------------------------------------    
 }
 
 void AnalyzerDBsKsKs::WriteHistos(){
