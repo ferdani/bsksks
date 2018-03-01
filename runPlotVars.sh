@@ -1,0 +1,5 @@
+root -l -b -q 'plotter.C("InvMass")'
+#root -l -b -q 'plotter.C("pip_PT")'
+#root -l -b -q 'plotter.C("pim_PT")'
+#root -l -b -q 'plotter.C("Km_PT")'
+#root -l -b -q 'plotter.C("Kp_PT")'
