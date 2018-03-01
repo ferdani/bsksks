@@ -7,6 +7,10 @@
 
 //histogramas
 TH1F* H_InvariantMass = new TH1F("H_InvMass", "Invariant Mass kpikpi", 100, 4700, 6000);
+TH1F* H_pip_PT = new TH1F("H_pip_PT", "PT of pion plus", 100, 0, 8000);
+TH1F* H_pim_PT = new TH1F("H_pim_PT", "PT of pion minus", 100, 0, 8000);
+TH1F* H_Kp_PT = new TH1F("H_Kp_PT", "PT of kaon plus", 100, 0, 7000);
+TH1F* H_Km_PT = new TH1F("H_Km_PT", "PT of kaon minus", 100, 0,7000);
 
 void AnalyzerDBsKsKs::Loop(){
 //   In a ROOT session, you can do:
@@ -42,6 +46,11 @@ void AnalyzerDBsKsKs::Loop(){
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 	  printProgBar(jentry*100./nentries);
       //selección:
+      H_pim_PT->Fill(pim_PT);
+      H_pip_PT->Fill(pip_PT);
+      H_Kp_PT->Fill(Kp_PT);
+      H_Km_PT->Fill(Km_PT);
+      
       if(pip_PT>500 && Km_PT>500 && pim_PT>500 && Kp_PT>500){
 		  
 		  if(pip_IPCHI2_OWNPV>36. && Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36.){
@@ -104,7 +113,11 @@ void AnalyzerDBsKsKs::WriteHistos(){
   gSystem->mkdir(outputDir, true);
   out = new TFile(outputDir + "/Histos_" + sampleNameRoot + ".root", "RECREATE");
   
-  H_InvariantMass->Write();
+  H_InvariantMass->Write(); 
+  H_pim_PT->Write();
+  H_pip_PT->Write();
+  H_Km_PT->Write();
+  H_Kp_PT->Write();
   out->Close();
   delete out;
 }
