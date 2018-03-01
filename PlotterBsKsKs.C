@@ -42,6 +42,10 @@ void PlotterBsKsKs(TString var){
   leg->Draw();
 
   if(var == "InvMass") xt = ("M_{kpikpi} [GeV]");
+  if(var == "pip_PT") xt = ("PT_{pip} [GeV]^{2}");
+  if(var == "pim_PT") xt = ("PT_{pim} [GeV]^{2}");
+  if(var == "Kp_PT") xt = ("PT_{Kp} [GeV]^{2}");
+  if(var == "Km_PT") xt = ("PT_{Km} [GeV]^{2}");
 
   hStack->GetXaxis()->SetTitle(xt);
   hStack->GetYaxis()->SetTitle("Counts");
