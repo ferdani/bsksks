@@ -6,8 +6,8 @@
 #include <iostream>
 
 //histogramas
-TH1F* H_InvariantMassOldCuts = new TH1F("H_InvMass", "Invariant Mass kpikpi Old Cuts", 100, 4700, 6000);
-TH1F* H_InvariantMassNewCuts = new TH1F("H_InvMass", "Invariant Mass kpikpi New Cuts", 100, 4700, 6000);
+TH1F* H_InvariantMassOldCuts = new TH1F("H_InvMassOldCuts", "Invariant Mass kpikpi Old Cuts", 100, 4700, 6000);
+TH1F* H_InvariantMassNewCuts = new TH1F("H_InvMassNewCuts", "Invariant Mass kpikpi New Cuts", 100, 4700, 6000);
 
 TH1F* H_pip_PT = new TH1F("H_pip_PT", "PT of pion plus", 100, 0, 8000);
 TH1F* H_pim_PT = new TH1F("H_pim_PT", "PT of pion minus", 100, 0, 8000);
