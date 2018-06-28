@@ -5,10 +5,12 @@
 #include <TCanvas.h>
 #include <iostream>
 
-//histogramas
-TH1F* H_InvariantMassOldCuts = new TH1F("H_InvMassOldCuts", "Invariant Mass kpikpi Old Cuts", 100, 4700, 6000);
-TH1F* H_InvariantMassNewCuts = new TH1F("H_InvMassNewCuts", "Invariant Mass kpikpi New Cuts", 100, 4700, 6000);
+//histogramas--------------------------------------------------------------------------------------------------
 
+
+//Masa invariante de los cuatro cuerpos
+TH1F* H_InvariantMass = new TH1F("H_InvMass", "Invariant Mass kpikpi", 100, 4700, 6000);
+//Histogramas de las variables
 TH1F* H_pip_PT = new TH1F("H_pip_PT", "PT of pion plus", 100, 0, 8000);
 TH1F* H_pim_PT = new TH1F("H_pim_PT", "PT of pion minus", 100, 0, 8000);
 TH1F* H_Kp_PT = new TH1F("H_Kp_PT", "PT of kaon plus", 100, 0, 7000);
@@ -18,6 +20,8 @@ TH1F* H_Kstb_PT = new TH1F("H_Kstb_PT", "PT of k' star", 200, 0,16000);
 TH1F* H_Kst_M = new TH1F("H_Kst_M", "InvMass of k star", 200, 0, 2400);
 TH1F* H_Kstb_M = new TH1F("H_Kstb_M", "InvMass of k' star", 200, 0, 2400);
 
+
+//Loop sobre todos los eventos----------------------------------------------------------------------------------
 void AnalyzerDBsKsKs::Loop(){
 //   In a ROOT session, you can do:
 //      Root > .L AnalyzerDBsKsKs.C
@@ -63,38 +67,44 @@ void AnalyzerDBsKsKs::Loop(){
       H_Kst_M->Fill(Kst_M);
       H_Kstb_M->Fill(Kstb_M);
       
-      //Old selection:
+      //First selection:-----------------------------------------------------------------------------------------
+      //tracks_pt. Limites al momento de las particulas finales k (+,-) pion (+,-) 
       if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500.){
-		  
+		  //tracks_chi2. La reconstrucción de la traza debe tener una desviación cuadrática de 6 sigmas en cuanto
+		  //a que proceda del vértice primario las cuatro partículas finales. Los K generados no vuelan por lo que 
+		  //sus productos de desintegracion salen del mismo punto
 		  if(pip_IPCHI2_OWNPV>36. && Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36.){
-			  
+			  //pid_kaons. De acuerdo a la definición del particle identification (vease apuntes de Juan Saborido)
 			  if(Km_PIDK>2. && Kp_PIDK>2.){
-				  
+				  //pid_pions. Se definen sobre los kaones por lo que debe ser un número negativo para que las
+				  //particulas que identificamos sean piones.
 				  if(pip_PIDK<0. && pim_PIDK<0.){
-					  
+					  //trchi2dof. Se exige que la traza cumpla un chi square dividido por los grados de libertad.
+					  //pedimos que sea un buen ajuste la traza reconstruida de cada partícula
 					  if(pip_TRACK_CHI2NDOF<5 && Km_TRACK_CHI2NDOF<5 && pim_TRACK_CHI2NDOF<5 && Kp_TRACK_CHI2NDOF<5){
-						  
+						  //vprotons. Se exige un veto a protones, es decir, que todas nuestras particulas reconstruidas
+						  //a través del particle identification no sean protones
 						  if((Km_PIDp-Km_PIDK)<0. && (Kp_PIDp-Kp_PIDK)<0. && pim_PIDp<0. && pip_PIDp<0.){
-							  
+							  //Ks_mass. Se impone una selección sobre la masa de kstar y kstar bar
 							  if(Kstb_M<1600. && Kst_M<1600.){
-								  
+								  //Ks_pt. Se impone una selección sobre el momento del kstar y kstar bar
 								  if(Kstb_PT>900. && Kst_PT>900.){
-									  
+									  //Ks_Vchi2ndof
 									  if(Kstb_ENDVERTEX_CHI2<9. && Kst_ENDVERTEX_CHI2<9.){
-										  
+										  //Ks_DIRA
 										  if(Kstb_DIRA_OWNPV>0. && Kst_DIRA_OWNPV>0.){
-											  
+											  //Veto a muones. No queremos que ninguna de nuestras particulas sea un muon
 											  if(pip_isMuon==0 && pim_isMuon==0 && Kp_isMuon==0 && Km_isMuon == 0){
 												  
+													//Construcción de los cutrivectores
 													kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
 													kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
 													piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
 													piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
 										
 													//calculo masa invariante de los cuatro cuerpos
-													
-													MkpikpiOld=(kplus+piminus+kminus+piplus).M();
-													H_InvariantMassOldCuts->Fill(MkpikpiOld);
+													Mkpikpi=(kplus+piminus+kminus+piplus).M();
+													H_InvariantMass->Fill(Mkpikpi);
 													
 											  }
 									      }
@@ -106,53 +116,7 @@ void AnalyzerDBsKsKs::Loop(){
 				  }
 			  }
 	      }
-      }
-		
-	  //New selection:	
-	  if(pip_PT>490. && Km_PT>490. && pim_PT>490. && Kp_PT>490.){
-		  
-		  if(pip_IPCHI2_OWNPV>36. && Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36.){
-			  
-			  if(Km_PIDK>3.1 && Kp_PIDK>3.1){
-				  
-				  if(pip_PIDK<0. && pim_PIDK<0.){
-					  
-					  if(pip_TRACK_CHI2NDOF<5 && Km_TRACK_CHI2NDOF<5 && pim_TRACK_CHI2NDOF<5 && Kp_TRACK_CHI2NDOF<5){
-						  
-						  if((Km_PIDp-Km_PIDK)<0. && (Kp_PIDp-Kp_PIDK)<0. && pim_PIDp<0. && pip_PIDp<0.){
-							  
-							  if(Kstb_M<1600. && Kst_M<1600.){
-								  
-								  if(Kstb_PT>900. && Kst_PT>900.){
-									  
-									  if(Kstb_ENDVERTEX_CHI2<9. && Kst_ENDVERTEX_CHI2<9.){
-										  
-										  if(Kstb_DIRA_OWNPV>0. && Kst_DIRA_OWNPV>0.){
-											  
-											  if(pip_isMuon==0 && pim_isMuon==0 && Kp_isMuon==0 && Km_isMuon == 0){
-												  
-													kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
-													kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
-													piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
-													piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
-										
-													//calculo masa invariante de los cuatro cuerpos
-													
-													MkpikpiNew=(kplus+piminus+kminus+piplus).M();
-													H_InvariantMassNewCuts->Fill(MkpikpiNew);
-													
-											  }
-									      }
-								      }
-								  }
-							  }
-						  }
-				      }
-				  }
-			  }
-	      }
-      }
-      			
+      }      			
    }
 cout << endl;	
 std::cout<< "100" << "%   ¡Complete!  " << std::flush << "\r" << endl;
@@ -172,9 +136,7 @@ void AnalyzerDBsKsKs::WriteHistos(){
   gSystem->mkdir(outputDir, true);
   out = new TFile(outputDir + "/Histos_" + sampleNameRoot + ".root", "RECREATE");
   
-  H_InvariantMassOldCuts->Write();
-  H_InvariantMassNewCuts->Write();
-  
+  H_InvariantMass->Write();
   H_pim_PT->Write();
   H_pip_PT->Write();
   H_Kp_PT->Write();
