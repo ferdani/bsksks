@@ -258,6 +258,7 @@ public :
    Double_t        Kp_IPCHI2_ORIVX;
    Double_t        Kp_P;
    Double_t        Kp_PT;
+   Double_t        Kplus_PT; //variable del MC
    Double_t        Kp_PE;
    Double_t        Kp_PX;
    Double_t        Kp_PY;
@@ -348,6 +349,7 @@ public :
    Double_t        pim_IPCHI2_ORIVX;
    Double_t        pim_P;
    Double_t        pim_PT;
+   Double_t        Piminus_PT; //variable del MC
    Double_t        pim_PE;
    Double_t        pim_PX;
    Double_t        pim_PY;
@@ -518,6 +520,7 @@ public :
    Double_t        Km_IPCHI2_ORIVX;
    Double_t        Km_P;
    Double_t        Km_PT;
+   Double_t        Kminus_PT;  //variable del MC
    Double_t        Km_PE;
    Double_t        Km_PX;
    Double_t        Km_PY;
@@ -608,6 +611,7 @@ public :
    Double_t        pip_IPCHI2_ORIVX;
    Double_t        pip_P;
    Double_t        pip_PT;
+   Double_t        Piplus_PT; //variable del MC
    Double_t        pip_PE;
    Double_t        pip_PX;
    Double_t        pip_PY;
@@ -1641,6 +1645,7 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("Kp_IPCHI2_ORIVX", &Kp_IPCHI2_ORIVX, &b_Kp_IPCHI2_ORIVX);
    fChain->SetBranchAddress("Kp_P", &Kp_P, &b_Kp_P);
    fChain->SetBranchAddress("Kp_PT", &Kp_PT, &b_Kp_PT);
+   fChain->SetBranchAddress("Kplus_PT", &Kplus_PT, &b_Kplus_PT); //variable del MC
    fChain->SetBranchAddress("Kp_PE", &Kp_PE, &b_Kp_PE);
    fChain->SetBranchAddress("Kp_PX", &Kp_PX, &b_Kp_PX);
    fChain->SetBranchAddress("Kp_PY", &Kp_PY, &b_Kp_PY);
@@ -1731,6 +1736,7 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("pim_IPCHI2_ORIVX", &pim_IPCHI2_ORIVX, &b_pim_IPCHI2_ORIVX);
    fChain->SetBranchAddress("pim_P", &pim_P, &b_pim_P);
    fChain->SetBranchAddress("pim_PT", &pim_PT, &b_pim_PT);
+   fChain->SetBranchAddress("Piminus_PT", &Piminus_PT, &b_Piminus_PT); //variable del MC
    fChain->SetBranchAddress("pim_PE", &pim_PE, &b_pim_PE);
    fChain->SetBranchAddress("pim_PX", &pim_PX, &b_pim_PX);
    fChain->SetBranchAddress("pim_PY", &pim_PY, &b_pim_PY);
@@ -1901,6 +1907,7 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("Km_IPCHI2_ORIVX", &Km_IPCHI2_ORIVX, &b_Km_IPCHI2_ORIVX);
    fChain->SetBranchAddress("Km_P", &Km_P, &b_Km_P);
    fChain->SetBranchAddress("Km_PT", &Km_PT, &b_Km_PT);
+   fChain->SetBranchAddress("Kminus_PT", &Kminus_PT, &b_Kminus_PT); //variable del MC
    fChain->SetBranchAddress("Km_PE", &Km_PE, &b_Km_PE);
    fChain->SetBranchAddress("Km_PX", &Km_PX, &b_Km_PX);
    fChain->SetBranchAddress("Km_PY", &Km_PY, &b_Km_PY);
@@ -1991,6 +1998,7 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("pip_IPCHI2_ORIVX", &pip_IPCHI2_ORIVX, &b_pip_IPCHI2_ORIVX);
    fChain->SetBranchAddress("pip_P", &pip_P, &b_pip_P);
    fChain->SetBranchAddress("pip_PT", &pip_PT, &b_pip_PT);
+   fChain->SetBranchAddress("Piplus_PT", &Piplus_PT, &b_Piplus_PT); //variable del MC
    fChain->SetBranchAddress("pip_PE", &pip_PE, &b_pip_PE);
    fChain->SetBranchAddress("pip_PX", &pip_PX, &b_pip_PX);
    fChain->SetBranchAddress("pip_PY", &pip_PY, &b_pip_PY);

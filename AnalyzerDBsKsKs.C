@@ -58,15 +58,19 @@ void AnalyzerDBsKsKs::Loop(){
       //---------------------------selection process: ---------------------------------------------------------
       
       H_pim_PT->Fill(pim_PT);
+      H_pim_PT->Fill(Piminus_PT); //Cambio de variable en el MC
       H_pip_PT->Fill(pip_PT);
+      H_pip_PT->Fill(Piplus_PT); //Cambio de variable en el MC
       H_Kp_PT->Fill(Kp_PT);
+      H_Kp_PT->Fill(Kplus_PT); //Cambio de variable en el MC
       H_Km_PT->Fill(Km_PT);
+      H_Km_PT->Fill(Kminus_PT); //Cambio de variable en el MC
       H_Kst_PT->Fill(Kst_PT);
       H_Kstb_PT->Fill(Kstb_PT);
       H_Kst_M->Fill(Kst_M);
       H_Kstb_M->Fill(Kstb_M);
       
-      //First selection:-----------------------------------------------------------------------------------------
+      //First selection in data:-----------------------------------------------------------------------------------------
       //tracks_pt. Limites al momento de las particulas finales k (+,-) pion (+,-) 
       if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500.){
 		  //tracks_chi2. La reconstrucción de la traza debe tener una desviación cuadrática de 6 sigmas en cuanto
