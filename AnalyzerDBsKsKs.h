@@ -921,6 +921,7 @@ public :
    TBranch        *b_Kp_IPCHI2_ORIVX;   //!
    TBranch        *b_Kp_P;   //!
    TBranch        *b_Kp_PT;   //!
+   TBranch        *b_Kplus_PT;   //!
    TBranch        *b_Kp_PE;   //!
    TBranch        *b_Kp_PX;   //!
    TBranch        *b_Kp_PY;   //!
@@ -1011,6 +1012,7 @@ public :
    TBranch        *b_pim_IPCHI2_ORIVX;   //!
    TBranch        *b_pim_P;   //!
    TBranch        *b_pim_PT;   //!
+   TBranch        *b_Piminus_PT;   //!
    TBranch        *b_pim_PE;   //!
    TBranch        *b_pim_PX;   //!
    TBranch        *b_pim_PY;   //!
@@ -1181,6 +1183,7 @@ public :
    TBranch        *b_Km_IPCHI2_ORIVX;   //!
    TBranch        *b_Km_P;   //!
    TBranch        *b_Km_PT;   //!
+   TBranch        *b_Kminus_PT;   //!
    TBranch        *b_Km_PE;   //!
    TBranch        *b_Km_PX;   //!
    TBranch        *b_Km_PY;   //!
@@ -1271,6 +1274,7 @@ public :
    TBranch        *b_pip_IPCHI2_ORIVX;   //!
    TBranch        *b_pip_P;   //!
    TBranch        *b_pip_PT;   //!
+   TBranch        *b_Piplus_PT;   //!
    TBranch        *b_pip_PE;   //!
    TBranch        *b_pip_PX;   //!
    TBranch        *b_pip_PY;   //!
