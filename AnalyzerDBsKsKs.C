@@ -20,6 +20,11 @@ TH1F* H_Kstb_PT = new TH1F("H_Kstb_PT", "PT of k' star", 200, 0,16000);
 TH1F* H_Kst_M = new TH1F("H_Kst_M", "InvMass of k star", 200, 0, 2400);
 TH1F* H_Kstb_M = new TH1F("H_Kstb_M", "InvMass of k' star", 200, 0, 2400);
 
+TH1F* H_Bs0_M_MC = new TH1F("H_Bs0_M_MC", "Bs0 mass", 100, 4700, 6000);
+TH1F* H_pip_PT_MC = new TH1F("H_pip_PT_MC", "PT of pion plus MC", 100, 0, 8000);
+TH1F* H_pim_PT_MC = new TH1F("H_pim_PT_MC", "PT of pion minus MC", 100, 0, 8000);
+TH1F* H_Kp_PT_MC = new TH1F("H_Kp_PT_MC", "PT of kaon plus MC", 100, 0, 7000);
+TH1F* H_Km_PT_MC = new TH1F("H_Km_PT_MC", "PT of kaon minus MC", 100, 0,7000);
 
 //Loop sobre todos los eventos----------------------------------------------------------------------------------
 void AnalyzerDBsKsKs::Loop(){
@@ -58,17 +63,19 @@ void AnalyzerDBsKsKs::Loop(){
       //---------------------------selection process: ---------------------------------------------------------
       
       H_pim_PT->Fill(pim_PT);
-      H_pim_PT->Fill(Piminus_PT); //Cambio de variable en el MC
       H_pip_PT->Fill(pip_PT);
-      H_pip_PT->Fill(Piplus_PT); //Cambio de variable en el MC
       H_Kp_PT->Fill(Kp_PT);
-      H_Kp_PT->Fill(Kplus_PT); //Cambio de variable en el MC
       H_Km_PT->Fill(Km_PT);
-      H_Km_PT->Fill(Kminus_PT); //Cambio de variable en el MC
       H_Kst_PT->Fill(Kst_PT);
-      H_Kstb_PT->Fill(Kstb_PT);
       H_Kst_M->Fill(Kst_M);
       H_Kstb_M->Fill(Kstb_M);
+      
+      H_pim_PT_MC->Fill(Piminus_PT);
+      H_pip_PT_MC->Fill(Piplus_PT);
+      H_Kp_PT_MC->Fill(Kplus_PT);
+      H_Km_PT_MC->Fill(Kminus_PT);
+      H_Bs0_M_MC->Fill(B_s0_MM);
+      
       
       //First selection in data:-----------------------------------------------------------------------------------------
       //tracks_pt. Limites al momento de las particulas finales k (+,-) pion (+,-) 
@@ -148,6 +155,12 @@ void AnalyzerDBsKsKs::WriteHistos(){
   H_Kstb_PT->Write();
   H_Kst_M->Write();
   H_Kstb_M->Write();
+  
+  H_pim_PT_MC->Write();
+  H_pip_PT_MC->Write();
+  H_Kp_PT_MC->Write();
+  H_Km_PT_MC->Write();
+  H_Bs0_M_MC->Write();
   
   out->Close();
   delete out;

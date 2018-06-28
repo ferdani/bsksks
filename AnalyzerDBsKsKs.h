@@ -98,6 +98,7 @@ public :
    Double_t        Bs_REFPY;
    Double_t        Bs_REFPZ;
    Double_t        Bs_MM;
+   Double_t        B_s0_MM; //variable del MC
    Double_t        Bs_MMERR;
    Double_t        Bs_M;
    Int_t           Bs_ID;
@@ -761,6 +762,7 @@ public :
    TBranch        *b_Bs_REFPY;   //!
    TBranch        *b_Bs_REFPZ;   //!
    TBranch        *b_Bs_MM;   //!
+   TBranch        *b_B_s0_MM;  //!
    TBranch        *b_Bs_MMERR;   //!
    TBranch        *b_Bs_M;   //!
    TBranch        *b_Bs_ID;   //!
@@ -1364,6 +1366,7 @@ public :
    TBranch        *b_nMuonCoordsS4;   //!
    TBranch        *b_nMuonTracks;   //!
    TBranch        *b_StrippingBs2K0stK0stNominalLineDecision;   //!
+   
 
    AnalyzerDBsKsKs(TString sampleNameRoot, TString sampleName);
    virtual ~AnalyzerDBsKsKs();
@@ -1489,6 +1492,7 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("Bs_REFPY", &Bs_REFPY, &b_Bs_REFPY);
    fChain->SetBranchAddress("Bs_REFPZ", &Bs_REFPZ, &b_Bs_REFPZ);
    fChain->SetBranchAddress("Bs_MM", &Bs_MM, &b_Bs_MM);
+   fChain->SetBranchAddress("B_s0_MM", &B_s0_MM, &b_B_s0_MM);
    fChain->SetBranchAddress("Bs_MMERR", &Bs_MMERR, &b_Bs_MMERR);
    fChain->SetBranchAddress("Bs_M", &Bs_M, &b_Bs_M);
    fChain->SetBranchAddress("Bs_ID", &Bs_ID, &b_Bs_ID);
