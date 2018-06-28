@@ -9,7 +9,7 @@
 
 
 //Masa invariante de los cuatro cuerpos
-TH1F* H_InvariantMass = new TH1F("H_InvMass", "Invariant Mass kpikpi", 100, 4700, 6000);
+TH1F* H_InvMass = new TH1F("H_InvMass", "Invariant Mass kpikpi", 100, 4700, 6000);
 //Histogramas de las variables
 TH1F* H_pip_PT = new TH1F("H_pip_PT", "PT of pion plus", 100, 0, 8000);
 TH1F* H_pim_PT = new TH1F("H_pim_PT", "PT of pion minus", 100, 0, 8000);
@@ -42,8 +42,7 @@ void AnalyzerDBsKsKs::Loop(){
     // ---------------------------------------------------------------------------
     
 //inicializo las variables:
-   Float_t MkpikpiOld = 0.0;
-   Float_t MkpikpiNew = 0.0;	
+   Float_t Mkpikpi = 0.0;
 
 //constuyendo el loop
    if (fChain == 0) return;
@@ -104,7 +103,7 @@ void AnalyzerDBsKsKs::Loop(){
 										
 													//calculo masa invariante de los cuatro cuerpos
 													Mkpikpi=(kplus+piminus+kminus+piplus).M();
-													H_InvariantMass->Fill(Mkpikpi);
+													H_InvMass->Fill(Mkpikpi);
 													
 											  }
 									      }
@@ -136,7 +135,7 @@ void AnalyzerDBsKsKs::WriteHistos(){
   gSystem->mkdir(outputDir, true);
   out = new TFile(outputDir + "/Histos_" + sampleNameRoot + ".root", "RECREATE");
   
-  H_InvariantMass->Write();
+  H_InvMass->Write();
   H_pim_PT->Write();
   H_pip_PT->Write();
   H_Kp_PT->Write();
