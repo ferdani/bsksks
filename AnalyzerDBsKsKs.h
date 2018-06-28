@@ -1368,7 +1368,7 @@ public :
    TBranch        *b_StrippingBs2K0stK0stNominalLineDecision;   //!
    
 
-   AnalyzerDBsKsKs(TString sampleNameRoot, TString sampleName);
+   AnalyzerDBsKsKs(TString sampleNameRoot, TString sampleName, TString Type);
    virtual ~AnalyzerDBsKsKs();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
@@ -1382,11 +1382,12 @@ public :
 
    TString sampleNameRoot;
    TString sampleName;
+   TString Type;
    TFile* out = NULL;
 };
 
-AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample1, TString sample2) : fChain(0) {
-  TTree *tree; sampleNameRoot = sample1; sampleName = sample2;
+AnalyzerDBsKsKs::AnalyzerDBsKsKs(TString sample1, TString sample2, TString sample3) : fChain(0) {
+  TTree *tree; sampleNameRoot = sample1; sampleName = sample2; Type = sample3;
   TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/home3/daniel.fernandez/Arboles/" + sampleNameRoot  + ".root");
   if (!f || !f->IsOpen()) {
     f = new TFile("/home3/daniel.fernandez/Arboles/" + sampleNameRoot + ".root");
