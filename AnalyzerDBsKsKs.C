@@ -72,7 +72,7 @@ void AnalyzerDBsKsKs::Loop(){
 		H_Kp_PT->Fill(Kp_PT);
 		H_Km_PT->Fill(Km_PT);
 		H_Kst_PT->Fill(Kst_PT);
-	    H_Kstb_PT->Fill(Kstb_M);
+	    H_Kstb_PT->Fill(Kstb_PT);
 		H_Kst_M->Fill(Kst_M);
 		H_Kstb_M->Fill(Kstb_M);
       }
@@ -82,7 +82,7 @@ void AnalyzerDBsKsKs::Loop(){
 		H_Kp_PT_MC->Fill(Kplus_PT);
 		H_Km_PT_MC->Fill(Kminus_PT);
 		H_Kst_PT_MC->Fill(Kst_PT);
-	    H_Kstb_PT_MC->Fill(Kstb_M);
+	    H_Kstb_PT_MC->Fill(Kstb_PT);
 		H_Kst_M_MC->Fill(Kst_M);
 		H_Kstb_M_MC->Fill(Kstb_M);
 		H_Bs0_M_MC->Fill(B_s0_MM);
