@@ -9,16 +9,16 @@
 
 
 //Masa invariante de los cuatro cuerpos
-TH1F* H_InvMass = new TH1F("H_InvMass", "Invariant Mass kpikpi", 100, 4700, 6000);
+TH1F* H_InvMass_Data = new TH1F("H_InvMass_Data", "Invariant Mass kpikpi", 100, 4700, 6000);
 //Histogramas de las variables
-TH1F* H_pip_PT = new TH1F("H_pip_PT", "PT of pion plus", 100, 0, 8000);
-TH1F* H_pim_PT = new TH1F("H_pim_PT", "PT of pion minus", 100, 0, 8000);
-TH1F* H_Kp_PT = new TH1F("H_Kp_PT", "PT of kaon plus", 100, 0, 7000);
-TH1F* H_Km_PT = new TH1F("H_Km_PT", "PT of kaon minus", 100, 0,7000);
-TH1F* H_Kst_PT = new TH1F("H_Kst_PT", "PT of k star", 200, 0,16000);
-TH1F* H_Kstb_PT = new TH1F("H_Kstb_PT", "PT of k star bar", 200, 0,16000);
-TH1F* H_Kst_M = new TH1F("H_Kst_M", "InvMass of k star", 200, 0, 2400);
-TH1F* H_Kstb_M = new TH1F("H_Kstb_M", "InvMass of k star bar", 200, 0, 2400);
+TH1F* H_pip_PT_Data = new TH1F("H_pip_PT_Data", "PT of pion plus", 100, 0, 8000);
+TH1F* H_pim_PT_Data = new TH1F("H_pim_PT_Data", "PT of pion minus", 100, 0, 8000);
+TH1F* H_Kp_PT_Data = new TH1F("H_Kp_PT_Data", "PT of kaon plus", 100, 0, 7000);
+TH1F* H_Km_PT_Data = new TH1F("H_Km_PT_Data", "PT of kaon minus", 100, 0,7000);
+TH1F* H_Kst_PT_Data = new TH1F("H_Kst_PT_Data", "PT of k star", 200, 0,16000);
+TH1F* H_Kstb_PT_Data = new TH1F("H_Kstb_PT_Data", "PT of k star bar", 200, 0,16000);
+TH1F* H_Kst_M_Data = new TH1F("H_Kst_M_Data", "InvMass of k star", 200, 0, 2400);
+TH1F* H_Kstb_M_Data = new TH1F("H_Kstb_M_Data", "InvMass of k star bar", 200, 0, 2400);
 
 TH1F* H_Bs0_M_MC = new TH1F("H_Bs0_M_MC", "Bs0 mass", 100, 4700, 6000);
 TH1F* H_pip_PT_MC = new TH1F("H_pip_PT_MC", "PT of pion plus MC", 100, 0, 8000);
@@ -67,14 +67,14 @@ void AnalyzerDBsKsKs::Loop(){
       //---------------------------selection process: ---------------------------------------------------------
       
       if(Type == "Data"){
-		H_pim_PT->Fill(pim_PT);
-		H_pip_PT->Fill(pip_PT);
-		H_Kp_PT->Fill(Kp_PT);
-		H_Km_PT->Fill(Km_PT);
-		H_Kst_PT->Fill(Kst_PT);
-	    H_Kstb_PT->Fill(Kstb_PT);
-		H_Kst_M->Fill(Kst_M);
-		H_Kstb_M->Fill(Kstb_M);
+		H_pim_PT_Data->Fill(pim_PT);
+		H_pip_PT_Data->Fill(pip_PT);
+		H_Kp_PT_Data->Fill(Kp_PT);
+		H_Km_PT_Data->Fill(Km_PT);
+		H_Kst_PT_Data->Fill(Kst_PT);
+	    H_Kstb_PT_Data->Fill(Kstb_PT);
+		H_Kst_M_Data->Fill(Kst_M);
+		H_Kstb_M_Data->Fill(Kstb_M);
       }
       if(Type == "MC"){
 		H_pim_PT_MC->Fill(Piminus_PT);
@@ -126,7 +126,7 @@ void AnalyzerDBsKsKs::Loop(){
 										
 													  //calculo masa invariante de los cuatro cuerpos
 													  Mkpikpi=(kplus+piminus+kminus+piplus).M();
-													  H_InvMass->Fill(Mkpikpi);
+													  H_InvMass_Data->Fill(Mkpikpi);
 											      }
 											  }
 								          }
@@ -160,15 +160,15 @@ void AnalyzerDBsKsKs::WriteHistos(){
   out = new TFile(outputDir + "/Histos_" + sampleNameRoot + ".root", "RECREATE");
   
   if(Type == "Data"){
-	H_InvMass->Write();
-	H_pim_PT->Write();
-	H_pip_PT->Write();
-	H_Kp_PT->Write();
-	H_Km_PT->Write();
-	H_Kst_PT->Write();
-	H_Kstb_PT->Write();
-	H_Kst_M->Write();
-	H_Kstb_M->Write();
+	H_InvMass_Data->Write();
+	H_pim_PT_Data->Write();
+	H_pip_PT_Data->Write();
+	H_Kp_PT_Data->Write();
+	H_Km_PT_Data->Write();
+	H_Kst_PT_Data->Write();
+	H_Kstb_PT_Data->Write();
+	H_Kst_M_Data->Write();
+	H_Kstb_M_Data->Write();
   }
   if(Type == "MC"){
 	H_pim_PT_MC->Write();

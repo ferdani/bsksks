@@ -15,47 +15,54 @@ TH1F* loadHistogram(TString sampleNameRoot, TString var, TString Type){
   TFile* f;
   f = TFile::Open(pathToFiles + "Histos_" + sampleNameRoot + ".root");
   TH1F* h;
-  if(Type == "Data") f->GetObject("H_"+var, h);
-  if(Type == "MC") f->GetObject("H_"+var+"_MC", h);
+  TString type;
+  if(Type == "Data") f->GetObject("H_"+var+"_"+type, h);
+  if(Type == "MC") f->GetObject("H_"+var+"_"+type, h);
+
   h->SetDirectory(0);
   delete f;
   return h;	  
 }
 
 void PlotterBsKsKs(TString var){
-  TH1F* down  = loadHistogram("DTT_2016_Reco16Strip28_Down_BHADRON", var, "Data");
-  TH1F* up = loadHistogram("DTT_2016_Reco16Strip28_Up_BHADRON", var, "Data");
+  //TH1F* down  = loadHistogram("DTT_2016_Reco16Strip28_Down_BHADRON", var, "Data");
+  //TH1F* up = loadHistogram("DTT_2016_Reco16Strip28_Up_BHADRON", var, "Data");
   TH1F* downMC  = loadHistogram("Bs2Kst0Kst0_wide_MC2012_magDown_Bs2Kst0Kst0_13104001_Job1555", var, "MC");
-  TH1F* upMC = loadHistogram("Bs2Kst0Kst0_wide_MC2012_magUp_Bs2Kst0Kst0_13104001_Job1555", var, "MC");
+  //TH1F* upMC = loadHistogram("Bs2Kst0Kst0_wide_MC2012_magUp_Bs2Kst0Kst0_13104001_Job1553", var, "MC");
+  TH1F* blabla = loadHistogram("DecayTree", var, "Data");
 
   TLegend* leg = new TLegend(0.8,0.8,0.98,0.98);
-  THStack* hStack = new THStack("Stack_"+var, "");
+  
+  THStack* hStack = new THStack("Stack_"+var+"_Data", "");
   THStack* hStackMC = new THStack("Stack_"+var+"_MC", "");	
-  
-  if(Type == "Data"){	
-	down->SetFillColor(kRed+1  );
-	up->SetFillColor(kBlue);
-	hStack->Add(down);
-    hStack->Add(up);
-    
-    leg->AddEntry(down, Form("down : %5.2f", down->Integral() + down->GetBinContent(down->GetNbinsX()+2)), "f");
-    leg->AddEntry(up, Form("up : %5.2f", up->Integral() + up->GetBinContent(up->GetNbinsX()+2)), "f");
-    
-    hStack->Draw("hist");
-  }
-  
-  if(Type == "MC"){
+ 	
+  if(type == "MC"){
 	downMC->SetFillColor(kRed+1  );
-	upMC->SetFillColor(kBlue); 
+	//upMC->SetFillColor(kBlue); 
 
 	hStackMC->Add(downMC);
-	hStackMC->Add(upMC); 
 	
-	leg->AddEntry(downMC, Form("downMC : %5.2f", downMC->Integral() + down->GetBinContent(down->GetNbinsX()+2)), "f");
-    leg->AddEntry(upMC, Form("upMC : %5.2f", upMC->Integral() + up->GetBinContent(up->GetNbinsX()+2)), "f");
+	leg->AddEntry(downMC, Form("downMC : %5.2f", downMC->Integral() + downMC->GetBinContent(downMC->GetNbinsX()+2)), "f");
     	  
     hStackMC->Draw("hist");
-  }	  
+    
+    hStackMC->GetXaxis()->SetTitle(xt);
+    hStackMC->GetYaxis()->SetTitle("Counts");
+    hStackMC->GetYaxis()->SetTitleOffset(1.3);
+  }
+  if(type == "Data"){	
+    blabla->SetFillColor(kRed+1  );
+
+	hStack->Add(blabla);
+    
+	leg->AddEntry(down, Form("blabla : %5.2f", down->Integral() + blabla->GetBinContent(blabla->GetNbinsX()+2)), "f");
+    
+	hStack->Draw("hist");
+	
+	hStack->GetXaxis()->SetTitle(xt);
+    hStack->GetYaxis()->SetTitle("Counts");
+    hStack->GetYaxis()->SetTitleOffset(1.3);
+  }
 
   TCanvas *c = new TCanvas("c","c",10,10,800,600);
   
@@ -70,14 +77,6 @@ void PlotterBsKsKs(TString var){
   if(var == "Kstb_PT") xt = ("PT_{Kstb} [GeV]^{2}");
   if((var == "Kst_M") || (var == "Kstb_M")) xt = ("M_{Kst} [GeV]");
 
-  hStack->GetXaxis()->SetTitle(xt);
-  hStack->GetYaxis()->SetTitle("Counts");
-  hStack->GetYaxis()->SetTitleOffset(1.3);
-  
-  hStackMC->GetXaxis()->SetTitle(xt);
-  hStackMC->GetYaxis()->SetTitle("Counts");
-  hStackMC->GetYaxis()->SetTitleOffset(1.3);
-  
   mylatex = new TLatex();  
   mylatex->SetTextSize(0.04);
   mylatex->DrawLatexNDC(0.17, 0.91, "#font[12]{L=50 pb^{-1}} #sqrt{#font[12]{s}}#font[12]{= 7 TeV}");
