@@ -16,9 +16,14 @@ TH1F* loadHistogram(TString sampleNameRoot, TString var, TString Type){
   f = TFile::Open(pathToFiles + "Histos_" + sampleNameRoot + ".root");
   TH1F* h;
   TString type;
-  if(Type == "Data") f->GetObject("H_"+var+"_"+type, h);
-  if(Type == "MC") f->GetObject("H_"+var+"_"+type, h);
-
+  if(Type == "Data"){
+	  type == "Data";
+	  f->GetObject("H_"+var+"_"+type, h);
+  }
+  if(Type == "MC"){ 
+	  type == "MC";
+	  f->GetObject("H_"+var+"_"+type, h);
+  }
   h->SetDirectory(0);
   delete f;
   return h;	  
@@ -55,7 +60,7 @@ void PlotterBsKsKs(TString var){
 
 	hStack->Add(blabla);
     
-	leg->AddEntry(down, Form("blabla : %5.2f", down->Integral() + blabla->GetBinContent(blabla->GetNbinsX()+2)), "f");
+	leg->AddEntry(blabla, Form("blabla : %5.2f", blabla->Integral() + blabla->GetBinContent(blabla->GetNbinsX()+2)), "f");
     
 	hStack->Draw("hist");
 	
