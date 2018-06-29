@@ -31,13 +31,13 @@ void PlotterBsKsKs(TString var, TString Type){
   THStack* hStack = new THStack("Stack_"+var+"_"+Type, "");	
   TLegend* leg = new TLegend(0.8,0.8,0.98,0.98);
  	
-  if(type == "MC"){
+  if(Type == "MC"){
 	downMC->SetFillColor(kRed+1  );
 	//upMC->SetFillColor(kBlue); 
 	hStack->Add(downMC);	
 	leg->AddEntry(downMC, Form("downMC : %5.2f", downMC->Integral() + downMC->GetBinContent(downMC->GetNbinsX()+2)), "f");   	 
   }
-  if(type == "Data"){	  	
+  if(Type == "Data"){	  	
     blabla->SetFillColor(kRed+1  );
 	hStack->Add(blabla);   
 	leg->AddEntry(blabla, Form("blabla : %5.2f", blabla->Integral() + blabla->GetBinContent(blabla->GetNbinsX()+2)), "f");
