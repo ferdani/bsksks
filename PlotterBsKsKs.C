@@ -29,33 +29,36 @@ void PlotterBsKsKs(TString var){
   TH1F* upMC = loadHistogram("Bs2Kst0Kst0_wide_MC2012_magUp_Bs2Kst0Kst0_13104001_Job1555", var, "MC");
 
   TLegend* leg = new TLegend(0.8,0.8,0.98,0.98);
-  	
+  THStack* hStack = new THStack("Stack_"+var, "");
+  THStack* hStackMC = new THStack("Stack_"+var+"_MC", "");	
+  
   if(Type == "Data"){	
 	down->SetFillColor(kRed+1  );
 	up->SetFillColor(kBlue);
-	THStack* hStack = new THStack("Stack_"+var, "");
 	hStack->Add(down);
     hStack->Add(up);
     
     leg->AddEntry(down, Form("down : %5.2f", down->Integral() + down->GetBinContent(down->GetNbinsX()+2)), "f");
     leg->AddEntry(up, Form("up : %5.2f", up->Integral() + up->GetBinContent(up->GetNbinsX()+2)), "f");
+    
+    hStack->Draw("hist");
   }
   
   if(Type == "MC"){
 	downMC->SetFillColor(kRed+1  );
 	upMC->SetFillColor(kBlue); 
-    THStack* hStackMC = new THStack("Stack_"+var+"_MC", "");
+
 	hStackMC->Add(downMC);
 	hStackMC->Add(upMC); 
 	
 	leg->AddEntry(downMC, Form("downMC : %5.2f", downMC->Integral() + down->GetBinContent(down->GetNbinsX()+2)), "f");
-    leg->AddEntry(upMC, Form("upMC : %5.2f", upMC->Integral() + up->GetBinContent(up->GetNbinsX()+2)), "f");	  
+    leg->AddEntry(upMC, Form("upMC : %5.2f", upMC->Integral() + up->GetBinContent(up->GetNbinsX()+2)), "f");
+    	  
+    hStackMC->Draw("hist");
   }	  
 
   TCanvas *c = new TCanvas("c","c",10,10,800,600);
-
-  hStack->Draw("hist");
-  hStackMC->Draw("hist");
+  
   leg->Draw();
 
   if((var == "InvMass") || (var == "Bs0_M")) xt = ("M_{k #pi k #pi} [GeV]");
@@ -70,7 +73,11 @@ void PlotterBsKsKs(TString var){
   hStack->GetXaxis()->SetTitle(xt);
   hStack->GetYaxis()->SetTitle("Counts");
   hStack->GetYaxis()->SetTitleOffset(1.3);
-
+  
+  hStackMC->GetXaxis()->SetTitle(xt);
+  hStackMC->GetYaxis()->SetTitle("Counts");
+  hStackMC->GetYaxis()->SetTitleOffset(1.3);
+  
   mylatex = new TLatex();  
   mylatex->SetTextSize(0.04);
   mylatex->DrawLatexNDC(0.17, 0.91, "#font[12]{L=50 pb^{-1}} #sqrt{#font[12]{s}}#font[12]{= 7 TeV}");
