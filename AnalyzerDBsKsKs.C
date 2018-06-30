@@ -20,7 +20,7 @@ TH1F* H_Kstb_PT_Data = new TH1F("H_Kstb_PT_Data", "PT of k star bar", 200, 0,160
 TH1F* H_Kst_M_Data = new TH1F("H_Kst_M_Data", "InvMass of k star", 200, 0, 2400);
 TH1F* H_Kstb_M_Data = new TH1F("H_Kstb_M_Data", "InvMass of k star bar", 200, 0, 2400);
 
-TH1F* H_Bs0_M_MC = new TH1F("H_Bs0_M_MC", "Bs0 mass", 100, 4700, 6000);
+TH1F* H_InvMass_MC = new TH1F("H_InvMass_MC", "Bs0 mass MC", 100, 4700, 6000);
 TH1F* H_pip_PT_MC = new TH1F("H_pip_PT_MC", "PT of pion plus MC", 100, 0, 8000);
 TH1F* H_pim_PT_MC = new TH1F("H_pim_PT_MC", "PT of pion minus MC", 100, 0, 8000);
 TH1F* H_Kp_PT_MC = new TH1F("H_Kp_PT_MC", "PT of kaon plus MC", 100, 0, 7000);
@@ -85,7 +85,7 @@ void AnalyzerDBsKsKs::Loop(){
 	    H_Kstb_PT_MC->Fill(Kstb_PT);
 		H_Kst_M_MC->Fill(Kst_M);
 		H_Kstb_M_MC->Fill(Kstb_M);
-		H_Bs0_M_MC->Fill(B_s0_MM);
+		H_InvMass_MC->Fill(B_s0_MM);
       }
       
       //First selection in data:-----------------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ void AnalyzerDBsKsKs::WriteHistos(){
 	H_Kstb_PT_MC->Write();
     H_Kst_M_MC->Write();
     H_Kstb_M_MC->Write();
-	H_Bs0_M_MC->Write();
+	H_InvMass_MC->Write();
   }
   
   out->Close();

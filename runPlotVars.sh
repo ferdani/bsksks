@@ -1,5 +1,4 @@
 root -l -b -q 'PlotterBsKsKs.C("InvMass")'
-root -l -b -q 'PlotterBsKsKs.C("B_s0_M")'
 root -l -b -q 'PlotterBsKsKs.C("pip_PT")'
 root -l -b -q 'PlotterBsKsKs.C("pim_PT")'
 root -l -b -q 'PlotterBsKsKs.C("Km_PT")'
