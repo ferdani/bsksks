@@ -48,7 +48,7 @@ void PlotterBsKsKs(TString var){
   data->Draw("pesame");
   leg->Draw();
 
-  if((var == "InvMass")	    xt = ("M_{k #pi k #pi} [GeV]");
+  if(var == "InvMass")	    xt = ("M_{k #pi k #pi} [GeV]");
   if(var == "pip_PT")       xt = ("PT_{pip} [GeV]^{2}");
   if(var == "pim_PT")       xt = ("PT_{pim} [GeV]^{2}");
   if(var == "Kp_PT")        xt = ("PT_{Kp} [GeV]^{2}");
