@@ -67,6 +67,6 @@ void PlotterBsKsKs(TString var){
 
   gSystem->mkdir(outputDir, true);
 
-  c->Print(outputDir + "/" + var + "_" + Type + ".png", "png");
-  c->Print(outputDir + "/" + var + "_" + Type + ".pdf", "pdf");
+  c->Print(outputDir + "/" + var + ".png", "png");
+  c->Print(outputDir + "/" + var + ".pdf", "pdf");
 }
