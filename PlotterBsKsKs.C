@@ -21,48 +21,47 @@ TH1F* loadHistogram(TString sampleNameRoot, TString var, TString Type){
   return h;	  
 }
 
-void PlotterBsKsKs(TString var, TString Type){
-  //TH1F* down  = loadHistogram("DTT_2016_Reco16Strip28_Down_BHADRON", var, "Data");
-  //TH1F* up = loadHistogram("DTT_2016_Reco16Strip28_Up_BHADRON", var, "Data");
-  TH1F* downMC  = loadHistogram("Bs2Kst0Kst0_wide_MC2012_magDown_Bs2Kst0Kst0_13104001_Job1555", var, "MC");
-  //TH1F* upMC = loadHistogram("Bs2Kst0Kst0_wide_MC2012_magUp_Bs2Kst0Kst0_13104001_Job1553", var, "MC");
-  TH1F* blabla = loadHistogram("DecayTree", var, "Data");
+void PlotterBsKsKs(TString var){
+  //Data Up and Down samples:
+  //TH1F* data  = loadHistogram("DTT_2016_Reco16Strip28_Down_BHADRON", var, "Data");
+        //data->Add(loadHistogram("DTT_2016_Reco16Strip28_Up_BHADRON", var, "Data"));
+  TH1F* data = loadHistogram("DecayTree", var, "Data");
 
-  THStack* hStack = new THStack("Stack_"+var+"_"+Type, "");	
+  //Monte Carlo Down and Up samples:
+  TH1F* MC  = loadHistogram("Bs2Kst0Kst0_wide_MC2012_magDown_Bs2Kst0Kst0_13104001_Job1555", var, "MC");
+        MC->Add(loadHistogram("Bs2Kst0Kst0_wide_MC2012_magUp_Bs2Kst0Kst0_13104001_Job1553", var, "MC"));
+
+  data->SetMarkerStyle(20);
+  data->SetMarkerColor(kBlack);
+  MC->SetFillColor(kRed+1);
+
+  THStack* hStack = new THStack("Stack_"+var, "");
+  hStack->Add(MC);
+
   TLegend* leg = new TLegend(0.8,0.8,0.98,0.98);
- 	
-  if(Type == "MC"){
-	downMC->SetFillColor(kRed+1  );
-	//upMC->SetFillColor(kBlue); 
-	hStack->Add(downMC);	
-	leg->AddEntry(downMC, Form("downMC : %5.2f", downMC->Integral() + downMC->GetBinContent(downMC->GetNbinsX()+2)), "f");   	 
-  }
-  if(Type == "Data"){	  	
-    blabla->SetFillColor(kRed+1  );
-	hStack->Add(blabla);   
-	leg->AddEntry(blabla, Form("blabla : %5.2f", blabla->Integral() + blabla->GetBinContent(blabla->GetNbinsX()+2)), "f");
-  }
-  
+  leg->AddEntry(data, Form("Data : %5.2f", data->Integral() + data->GetBinContent(data->GetNbinsX()+2)), "p");
+  leg->AddEntry(MC, Form("MC : %5.2f", MC->Integral() + MC->GetBinContent(MC->GetNbinsX()+2)), "f");
+
+  TCanvas *c = new TCanvas("c","c",10,10,800,600);
+
   hStack->Draw("hist");
-    
+  data->Draw("pesame");
+  leg->Draw();
+
+  if((var == "InvMass") || (var == "B_s0_M"))	   xt = ("M_{k #pi k #pi} [GeV]");
+  if(var == "pip_PT")                              xt = ("PT_{pip} [GeV]^{2}");
+  if(var == "pim_PT")                              xt = ("PT_{pim} [GeV]^{2}");
+  if(var == "Kp_PT")                               xt = ("PT_{Kp} [GeV]^{2}");
+  if(var == "Km_PT")                               xt = ("PT_{Km} [GeV]^{2}");
+  if(var == "Kst_PT")                              xt = ("PT_{Kst} [GeV]^{2}");
+  if(var == "Kstb_PT")                             xt = ("PT_{Kstb} [GeV]^{2}");
+  if((var == "Kst_M") || (var == "Kstb_M"))        xt = ("M_{Kst} [GeV]");
+
   hStack->GetXaxis()->SetTitle(xt);
   hStack->GetYaxis()->SetTitle("Counts");
   hStack->GetYaxis()->SetTitleOffset(1.3);
 
-  TCanvas *c = new TCanvas("c","c",10,10,800,600);
-  
-  leg->Draw();
-
-  if((var == "InvMass") || (var == "Bs0_M")) xt = ("M_{k #pi k #pi} [GeV]");
-  if(var == "pip_PT") xt = ("PT_{pip} [GeV]^{2}");
-  if(var == "pim_PT") xt = ("PT_{pim} [GeV]^{2}");
-  if(var == "Kp_PT") xt = ("PT_{Kp} [GeV]^{2}");
-  if(var == "Km_PT") xt = ("PT_{Km} [GeV]^{2}");
-  if(var == "Kst_PT") xt = ("PT_{Kst} [GeV]^{2}");
-  if(var == "Kstb_PT") xt = ("PT_{Kstb} [GeV]^{2}");
-  if((var == "Kst_M") || (var == "Kstb_M")) xt = ("M_{Kst} [GeV]");
-
-  mylatex = new TLatex();  
+  mylatex = new TLatex();
   mylatex->SetTextSize(0.04);
   mylatex->DrawLatexNDC(0.17, 0.91, "#font[12]{L=50 pb^{-1}} #sqrt{#font[12]{s}}#font[12]{= 7 TeV}");
 
