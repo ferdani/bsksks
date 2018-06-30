@@ -23,9 +23,9 @@ TH1F* loadHistogram(TString sampleNameRoot, TString var, TString Type){
 
 void PlotterBsKsKs(TString var){
   //Data Up and Down samples:
-  //TH1F* data  = loadHistogram("DTT_2016_Reco16Strip28_Down_BHADRON", var, "Data");
-        //data->Add(loadHistogram("DTT_2016_Reco16Strip28_Up_BHADRON", var, "Data"));
-  TH1F* data = loadHistogram("DecayTree", var, "Data");
+  TH1F* data  = loadHistogram("DTT_2016_Reco16Strip28_Down_BHADRON", var, "Data");
+        data->Add(loadHistogram("DTT_2016_Reco16Strip28_Up_BHADRON", var, "Data"));
+  //TH1F* data = loadHistogram("DecayTree", var, "Data");
 
   //Monte Carlo Down and Up samples:
   TH1F* MC  = loadHistogram("Bs2Kst0Kst0_wide_MC2012_magDown_Bs2Kst0Kst0_13104001_Job1555", var, "MC");
@@ -34,9 +34,11 @@ void PlotterBsKsKs(TString var){
   data->SetMarkerStyle(20);
   data->SetMarkerColor(kBlack);
   MC->SetFillColor(kRed+1);
+  MC->Scale(data->Integral()/MC->Integral());
 
   THStack* hStack = new THStack("Stack_"+var, "");
   hStack->Add(MC);
+  
 
   TLegend* leg = new TLegend(0.8,0.8,0.98,0.98);
   leg->AddEntry(data, Form("Data : %5.2f", data->Integral() + data->GetBinContent(data->GetNbinsX()+2)), "p");
