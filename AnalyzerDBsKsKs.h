@@ -308,6 +308,7 @@ public :
    Double_t        Kplus_IPCHI2_OWNPV; //variable del MC
    Double_t        Kplus_PIDK; //variable del MC
    Double_t        Kplus_TRACK_CHI2NDOF; //variable del MC
+   Double_t        Kplus_PIDp; //variable del MC
    Bool_t          Kplus_isMuon; //variable del MC
    Double_t        pim_LOKI_ENERGY;
    Double_t        pim_LOKI_ETA;
@@ -991,6 +992,7 @@ public :
    TBranch        *b_Kplus_IPCHI2_OWNPV;   //!
    TBranch        *b_Kplus_PIDK;   //!
    TBranch        *b_Kplus_TRACK_CHI2NDOF;   //!
+   TBranch        *b_Kplus_PIDp;   //!
    TBranch        *b_Kplus_isMuon;   //!
    TBranch        *b_pim_LOKI_ENERGY;   //!
    TBranch        *b_pim_LOKI_ETA;   //!
