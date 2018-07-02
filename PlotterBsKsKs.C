@@ -34,7 +34,10 @@ void PlotterBsKsKs(TString var){
   data->SetMarkerStyle(20);
   data->SetMarkerColor(kBlack);
   MC->SetFillColor(kRed+1);
-  MC->Scale(data->Integral()/MC->Integral());
+  Float_t scale;
+  scale=data->GetMaximum()/MC->GetMaximum();
+  //scale = data->Integral()/MC->Integral();
+  MC->Scale(scale);
 
   THStack* hStack = new THStack("Stack_"+var, "");
   hStack->Add(MC);
