@@ -259,7 +259,6 @@ public :
    Double_t        Kp_IPCHI2_ORIVX;
    Double_t        Kp_P;
    Double_t        Kp_PT;
-   Double_t        Kplus_PT; //variable del MC
    Double_t        Kp_PE;
    Double_t        Kp_PX;
    Double_t        Kp_PY;
@@ -305,6 +304,11 @@ public :
    Double_t        Kp_TRACK_Likelihood;
    Double_t        Kp_X;
    Double_t        Kp_Y;
+   Double_t        Kplus_PT; //variable del MC
+   Double_t        Kplus_IPCHI2_OWNPV; //variable del MC
+   Double_t        Kplus_PIDK; //variable del MC
+   Double_t        Kplus_TRACK_CHI2NDOF; //variable del MC
+   Bool_t          Kplus_isMuon; //variable del MC
    Double_t        pim_LOKI_ENERGY;
    Double_t        pim_LOKI_ETA;
    Double_t        pim_LOKI_PHI;
@@ -350,7 +354,6 @@ public :
    Double_t        pim_IPCHI2_ORIVX;
    Double_t        pim_P;
    Double_t        pim_PT;
-   Double_t        Piminus_PT; //variable del MC
    Double_t        pim_PE;
    Double_t        pim_PX;
    Double_t        pim_PY;
@@ -396,6 +399,12 @@ public :
    Double_t        pim_TRACK_Likelihood;
    Double_t        pim_X;
    Double_t        pim_Y;
+   Double_t        Piminus_PT; //variable del MC
+   Double_t        Piminus_IPCHI2_OWNPV; //variable del MC
+   Double_t        Piminus_PIDK; //variable del MC
+   Double_t        Piminus_TRACK_CHI2NDOF; //variable del MC
+   Double_t        Piminus_PIDp; //variable del MC
+   Bool_t          Piminus_isMuon; //variable del MC
    Double_t        Kstb_LOKI_ENERGY;
    Double_t        Kstb_LOKI_ETA;
    Double_t        Kstb_LOKI_PHI;
@@ -521,7 +530,6 @@ public :
    Double_t        Km_IPCHI2_ORIVX;
    Double_t        Km_P;
    Double_t        Km_PT;
-   Double_t        Kminus_PT;  //variable del MC
    Double_t        Km_PE;
    Double_t        Km_PX;
    Double_t        Km_PY;
@@ -567,6 +575,12 @@ public :
    Double_t        Km_TRACK_Likelihood;
    Double_t        Km_X;
    Double_t        Km_Y;
+   Double_t        Kminus_PT;  //variable del MC
+   Double_t        Kminus_IPCHI2_OWNPV; //variable del MC
+   Double_t        Kminus_PIDK; //variable del MC
+   Double_t        Kminus_TRACK_CHI2NDOF; //variable del MC
+   Double_t        Kminus_PIDp; //variable del MC
+   Bool_t          Kminus_isMuon ; //variable del MC
    Double_t        pip_LOKI_ENERGY;
    Double_t        pip_LOKI_ETA;
    Double_t        pip_LOKI_PHI;
@@ -612,7 +626,6 @@ public :
    Double_t        pip_IPCHI2_ORIVX;
    Double_t        pip_P;
    Double_t        pip_PT;
-   Double_t        Piplus_PT; //variable del MC
    Double_t        pip_PE;
    Double_t        pip_PX;
    Double_t        pip_PY;
@@ -658,6 +671,12 @@ public :
    Double_t        pip_TRACK_Likelihood;
    Double_t        pip_X;
    Double_t        pip_Y;
+   Double_t        Piplus_PT; //variable del MC
+   Double_t        Piplus_IPCHI2_OWNPV; //variable del MC
+   Double_t        Piplus_PIDK; //variable del MC
+   Double_t        Piplus_TRACK_CHI2NDOF; //variable del MC
+   Double_t        Piplus_PIDp; //variable del MC
+   Bool_t          Piplus_isMuon; //variable del MC
    UInt_t          nCandidate;
    ULong64_t       totCandidates;
    ULong64_t       EventInSequence;
@@ -923,7 +942,6 @@ public :
    TBranch        *b_Kp_IPCHI2_ORIVX;   //!
    TBranch        *b_Kp_P;   //!
    TBranch        *b_Kp_PT;   //!
-   TBranch        *b_Kplus_PT;   //!
    TBranch        *b_Kp_PE;   //!
    TBranch        *b_Kp_PX;   //!
    TBranch        *b_Kp_PY;   //!
@@ -969,6 +987,11 @@ public :
    TBranch        *b_Kp_TRACK_Likelihood;   //!
    TBranch        *b_Kp_X;   //!
    TBranch        *b_Kp_Y;   //!
+   TBranch        *b_Kplus_PT;   //!
+   TBranch        *b_Kplus_IPCHI2_OWNPV;   //!
+   TBranch        *b_Kplus_PIDK;   //!
+   TBranch        *b_Kplus_TRACK_CHI2NDOF;   //!
+   TBranch        *b_Kplus_isMuon;   //!
    TBranch        *b_pim_LOKI_ENERGY;   //!
    TBranch        *b_pim_LOKI_ETA;   //!
    TBranch        *b_pim_LOKI_PHI;   //!
@@ -1014,7 +1037,6 @@ public :
    TBranch        *b_pim_IPCHI2_ORIVX;   //!
    TBranch        *b_pim_P;   //!
    TBranch        *b_pim_PT;   //!
-   TBranch        *b_Piminus_PT;   //!
    TBranch        *b_pim_PE;   //!
    TBranch        *b_pim_PX;   //!
    TBranch        *b_pim_PY;   //!
@@ -1060,6 +1082,12 @@ public :
    TBranch        *b_pim_TRACK_Likelihood;   //!
    TBranch        *b_pim_X;   //!
    TBranch        *b_pim_Y;   //!
+   TBranch        *b_Piminus_PT;   //!
+   TBranch        *b_Piminus_IPCHI2_OWNPV;	//!
+   TBranch        *b_Piminus_PIDK;   //!
+   TBranch        *b_Piminus_TRACK_CHI2NDOF;   //!
+   TBranch        *b_Piminus_PIDp;   //!
+   TBranch        *b_Piminus_isMuon;   //!
    TBranch        *b_Kstb_LOKI_ENERGY;   //!
    TBranch        *b_Kstb_LOKI_ETA;   //!
    TBranch        *b_Kstb_LOKI_PHI;   //!
@@ -1185,7 +1213,6 @@ public :
    TBranch        *b_Km_IPCHI2_ORIVX;   //!
    TBranch        *b_Km_P;   //!
    TBranch        *b_Km_PT;   //!
-   TBranch        *b_Kminus_PT;   //!
    TBranch        *b_Km_PE;   //!
    TBranch        *b_Km_PX;   //!
    TBranch        *b_Km_PY;   //!
@@ -1231,6 +1258,12 @@ public :
    TBranch        *b_Km_TRACK_Likelihood;   //!
    TBranch        *b_Km_X;   //!
    TBranch        *b_Km_Y;   //!
+   TBranch        *b_Kminus_PT;   //!
+   TBranch        *b_Kminus_IPCHI2_OWNPV;	//!
+   TBranch        *b_Kminus_PIDK;   //!
+   TBranch        *b_Kminus_TRACK_CHI2NDOF;   //!
+   TBranch        *b_Kminus_PIDp;   //!
+   TBranch        *b_Kminus_isMuon;   //!
    TBranch        *b_pip_LOKI_ENERGY;   //!
    TBranch        *b_pip_LOKI_ETA;   //!
    TBranch        *b_pip_LOKI_PHI;   //!
@@ -1276,7 +1309,6 @@ public :
    TBranch        *b_pip_IPCHI2_ORIVX;   //!
    TBranch        *b_pip_P;   //!
    TBranch        *b_pip_PT;   //!
-   TBranch        *b_Piplus_PT;   //!
    TBranch        *b_pip_PE;   //!
    TBranch        *b_pip_PX;   //!
    TBranch        *b_pip_PY;   //!
@@ -1322,6 +1354,12 @@ public :
    TBranch        *b_pip_TRACK_Likelihood;   //!
    TBranch        *b_pip_X;   //!
    TBranch        *b_pip_Y;   //!
+   TBranch        *b_Piplus_PT;   //! 
+   TBranch        *b_Piplus_IPCHI2_OWNPV;   //!   
+   TBranch        *b_Piplus_PIDK;   //!   
+   TBranch        *b_Piplus_TRACK_CHI2NDOF;   //!
+   TBranch        *b_Piplus_PIDp;   //!
+   TBranch        *b_Piplus_isMuon;   //!
    TBranch        *b_nCandidate;   //!
    TBranch        *b_totCandidates;   //!
    TBranch        *b_EventInSequence;   //!
@@ -1654,7 +1692,6 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("Kp_IPCHI2_ORIVX", &Kp_IPCHI2_ORIVX, &b_Kp_IPCHI2_ORIVX);
    fChain->SetBranchAddress("Kp_P", &Kp_P, &b_Kp_P);
    fChain->SetBranchAddress("Kp_PT", &Kp_PT, &b_Kp_PT);
-   fChain->SetBranchAddress("Kplus_PT", &Kplus_PT, &b_Kplus_PT); //variable del MC
    fChain->SetBranchAddress("Kp_PE", &Kp_PE, &b_Kp_PE);
    fChain->SetBranchAddress("Kp_PX", &Kp_PX, &b_Kp_PX);
    fChain->SetBranchAddress("Kp_PY", &Kp_PY, &b_Kp_PY);
@@ -1700,6 +1737,12 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("Kp_TRACK_Likelihood", &Kp_TRACK_Likelihood, &b_Kp_TRACK_Likelihood);
    fChain->SetBranchAddress("Kp_X", &Kp_X, &b_Kp_X);
    fChain->SetBranchAddress("Kp_Y", &Kp_Y, &b_Kp_Y);
+   fChain->SetBranchAddress("Kplus_PT", &Kplus_PT, &b_Kplus_PT); //variable del MC
+   fChain->SetBranchAddress("Kplus_IPCHI2_OWNPV", &Kplus_IPCHI2_OWNPV, &b_Kplus_IPCHI2_OWNPV); //variable del MC
+   fChain->SetBranchAddress("Kplus_PIDK", &Kplus_PIDK, &b_Kplus_PIDK); //variable del MC   
+   fChain->SetBranchAddress("Kplus_TRACK_CHI2NDOF", &Kplus_TRACK_CHI2NDOF, &b_Kplus_TRACK_CHI2NDOF); //variable del MC   
+   fChain->SetBranchAddress("Kplus_PIDp", &Kplus_PIDp, &b_Kplus_PIDp); //variable del MC
+   fChain->SetBranchAddress("Kplus_isMuon", &Kplus_isMuon, &b_Kplus_isMuon); //variable del MC   
    fChain->SetBranchAddress("pim_LOKI_ENERGY", &pim_LOKI_ENERGY, &b_pim_LOKI_ENERGY);
    fChain->SetBranchAddress("pim_LOKI_ETA", &pim_LOKI_ETA, &b_pim_LOKI_ETA);
    fChain->SetBranchAddress("pim_LOKI_PHI", &pim_LOKI_PHI, &b_pim_LOKI_PHI);
@@ -1745,7 +1788,6 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("pim_IPCHI2_ORIVX", &pim_IPCHI2_ORIVX, &b_pim_IPCHI2_ORIVX);
    fChain->SetBranchAddress("pim_P", &pim_P, &b_pim_P);
    fChain->SetBranchAddress("pim_PT", &pim_PT, &b_pim_PT);
-   fChain->SetBranchAddress("Piminus_PT", &Piminus_PT, &b_Piminus_PT); //variable del MC
    fChain->SetBranchAddress("pim_PE", &pim_PE, &b_pim_PE);
    fChain->SetBranchAddress("pim_PX", &pim_PX, &b_pim_PX);
    fChain->SetBranchAddress("pim_PY", &pim_PY, &b_pim_PY);
@@ -1791,6 +1833,12 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("pim_TRACK_Likelihood", &pim_TRACK_Likelihood, &b_pim_TRACK_Likelihood);
    fChain->SetBranchAddress("pim_X", &pim_X, &b_pim_X);
    fChain->SetBranchAddress("pim_Y", &pim_Y, &b_pim_Y);
+   fChain->SetBranchAddress("Piminus_PT", &Piminus_PT, &b_Piminus_PT); //variable del MC
+   fChain->SetBranchAddress("Piminus_IPCHI2_OWNPV", &Piminus_IPCHI2_OWNPV, &b_Piminus_IPCHI2_OWNPV); //variable del MC
+   fChain->SetBranchAddress("Piminus_PIDK", &Piminus_PIDK, &b_Piminus_PIDK); //variable del MC
+   fChain->SetBranchAddress("Piminus_TRACK_CHI2NDOF", &Piminus_TRACK_CHI2NDOF, &b_Piminus_TRACK_CHI2NDOF); //variable del MC
+   fChain->SetBranchAddress("Piminus_PIDp", &Piminus_PIDp, &b_Piminus_PIDp);  //variable del MC
+   fChain->SetBranchAddress("Piminus_isMuon", &Piminus_isMuon, &b_Piminus_isMuon);  //variable del MC
    fChain->SetBranchAddress("Kstb_LOKI_ENERGY", &Kstb_LOKI_ENERGY, &b_Kstb_LOKI_ENERGY);
    fChain->SetBranchAddress("Kstb_LOKI_ETA", &Kstb_LOKI_ETA, &b_Kstb_LOKI_ETA);
    fChain->SetBranchAddress("Kstb_LOKI_PHI", &Kstb_LOKI_PHI, &b_Kstb_LOKI_PHI);
@@ -1916,7 +1964,6 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("Km_IPCHI2_ORIVX", &Km_IPCHI2_ORIVX, &b_Km_IPCHI2_ORIVX);
    fChain->SetBranchAddress("Km_P", &Km_P, &b_Km_P);
    fChain->SetBranchAddress("Km_PT", &Km_PT, &b_Km_PT);
-   fChain->SetBranchAddress("Kminus_PT", &Kminus_PT, &b_Kminus_PT); //variable del MC
    fChain->SetBranchAddress("Km_PE", &Km_PE, &b_Km_PE);
    fChain->SetBranchAddress("Km_PX", &Km_PX, &b_Km_PX);
    fChain->SetBranchAddress("Km_PY", &Km_PY, &b_Km_PY);
@@ -1962,6 +2009,12 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("Km_TRACK_Likelihood", &Km_TRACK_Likelihood, &b_Km_TRACK_Likelihood);
    fChain->SetBranchAddress("Km_X", &Km_X, &b_Km_X);
    fChain->SetBranchAddress("Km_Y", &Km_Y, &b_Km_Y);
+   fChain->SetBranchAddress("Kminus_PT", &Kminus_PT, &b_Kminus_PT); //variable del MC
+   fChain->SetBranchAddress("Kminus_IPCHI2_OWNPV", &Kminus_IPCHI2_OWNPV, &b_Kminus_IPCHI2_OWNPV); //variable del MC
+   fChain->SetBranchAddress("Kminus_PIDK", &Kminus_PIDK, &b_Kminus_PIDK); //variable del MC
+   fChain->SetBranchAddress("Kminus_TRACK_CHI2NDOF", &Kminus_TRACK_CHI2NDOF, &b_Kminus_TRACK_CHI2NDOF); //variable del MC
+   fChain->SetBranchAddress("Kminus_PIDp", &Kminus_PIDp, &b_Kminus_PIDp); //variable del MC
+   fChain->SetBranchAddress("Kminus_isMuon", &Kminus_isMuon, &b_Kminus_isMuon); //variable del MC
    fChain->SetBranchAddress("pip_LOKI_ENERGY", &pip_LOKI_ENERGY, &b_pip_LOKI_ENERGY);
    fChain->SetBranchAddress("pip_LOKI_ETA", &pip_LOKI_ETA, &b_pip_LOKI_ETA);
    fChain->SetBranchAddress("pip_LOKI_PHI", &pip_LOKI_PHI, &b_pip_LOKI_PHI);
@@ -2007,7 +2060,6 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("pip_IPCHI2_ORIVX", &pip_IPCHI2_ORIVX, &b_pip_IPCHI2_ORIVX);
    fChain->SetBranchAddress("pip_P", &pip_P, &b_pip_P);
    fChain->SetBranchAddress("pip_PT", &pip_PT, &b_pip_PT);
-   fChain->SetBranchAddress("Piplus_PT", &Piplus_PT, &b_Piplus_PT); //variable del MC
    fChain->SetBranchAddress("pip_PE", &pip_PE, &b_pip_PE);
    fChain->SetBranchAddress("pip_PX", &pip_PX, &b_pip_PX);
    fChain->SetBranchAddress("pip_PY", &pip_PY, &b_pip_PY);
@@ -2053,6 +2105,12 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("pip_TRACK_Likelihood", &pip_TRACK_Likelihood, &b_pip_TRACK_Likelihood);
    fChain->SetBranchAddress("pip_X", &pip_X, &b_pip_X);
    fChain->SetBranchAddress("pip_Y", &pip_Y, &b_pip_Y);
+   fChain->SetBranchAddress("Piplus_PT", &Piplus_PT, &b_Piplus_PT); //variable del MC
+   fChain->SetBranchAddress("Piplus_IPCHI2_OWNPV", &Piplus_IPCHI2_OWNPV, &b_Piplus_IPCHI2_OWNPV); //variable del MC
+   fChain->SetBranchAddress("Piplus_PIDK", &Piplus_PIDK, &b_Piplus_PIDK); //variable del MC
+   fChain->SetBranchAddress("Piplus_TRACK_CHI2NDOF", &Piplus_TRACK_CHI2NDOF, &b_Piplus_TRACK_CHI2NDOF);  //variable del MC
+   fChain->SetBranchAddress("Piplus_PIDp", &Piplus_PIDp, &b_Piplus_PIDp); //variable del MC
+   fChain->SetBranchAddress("Piplus_isMuon", &Piplus_isMuon, &b_Piplus_isMuon); //variable del MC
    fChain->SetBranchAddress("nCandidate", &nCandidate, &b_nCandidate);
    fChain->SetBranchAddress("totCandidates", &totCandidates, &b_totCandidates);
    fChain->SetBranchAddress("EventInSequence", &EventInSequence, &b_EventInSequence);

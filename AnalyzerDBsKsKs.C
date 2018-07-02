@@ -64,29 +64,10 @@ void AnalyzerDBsKsKs::Loop(){
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 	  printProgBar(jentry*100./nentries);
+	  
+	  
       //---------------------------selection process: ---------------------------------------------------------
       
-      if(Type == "Data"){
-		H_pim_PT_Data->Fill(pim_PT);
-		H_pip_PT_Data->Fill(pip_PT);
-		H_Kp_PT_Data->Fill(Kp_PT);
-		H_Km_PT_Data->Fill(Km_PT);
-		H_Kst_PT_Data->Fill(Kst_PT);
-	    H_Kstb_PT_Data->Fill(Kstb_PT);
-		H_Kst_M_Data->Fill(Kst_M);
-		H_Kstb_M_Data->Fill(Kstb_M);
-      }
-      if(Type == "MC"){
-		H_pim_PT_MC->Fill(Piminus_PT);
-		H_pip_PT_MC->Fill(Piplus_PT);
-		H_Kp_PT_MC->Fill(Kplus_PT);
-		H_Km_PT_MC->Fill(Kminus_PT);
-		H_Kst_PT_MC->Fill(Kst_PT);
-	    H_Kstb_PT_MC->Fill(Kstb_PT);
-		H_Kst_M_MC->Fill(Kst_M);
-		H_Kstb_M_MC->Fill(Kstb_M);
-		H_InvMass_MC->Fill(B_s0_MM);
-      }
       
       //First selection in data:-----------------------------------------------------------------------------------------
       if(Type == "Data"){
@@ -127,6 +108,15 @@ void AnalyzerDBsKsKs::Loop(){
 													  //calculo masa invariante de los cuatro cuerpos
 													  Mkpikpi=(kplus+piminus+kminus+piplus).M();
 													  H_InvMass_Data->Fill(Mkpikpi);
+													  
+													  H_pim_PT_Data->Fill(pim_PT);
+											    	  H_pip_PT_Data->Fill(pip_PT);
+													  H_Kp_PT_Data->Fill(Kp_PT);
+													  H_Km_PT_Data->Fill(Km_PT);
+													  H_Kst_PT_Data->Fill(Kst_PT);
+													  H_Kstb_PT_Data->Fill(Kstb_PT);
+													  H_Kst_M_Data->Fill(Kst_M);
+													  H_Kstb_M_Data->Fill(Kstb_M);
 											      }
 											  }
 								          }
@@ -139,7 +129,44 @@ void AnalyzerDBsKsKs::Loop(){
 	          }
           }
       }      			
-   }
+      
+      //Firts selection in MonteCarlo:-----------------------------------------------------------------------------------------
+      if(Type == "MC"){
+		  if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500.){
+			  if(Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36.){
+				  if(Kminus_PIDK>2. && Kplus_PIDK>2.){
+				      if(Piplus_PIDK<0. && Piminus_PIDK<0.){
+						  if(Piplus_TRACK_CHI2NDOF<5 && Kminus_TRACK_CHI2NDOF<5 && Piminus_TRACK_CHI2NDOF<5 && Kplus_TRACK_CHI2NDOF<5){
+							  if((Kminus_PIDp-Kminus_PIDK)<0. && (Kplus_PIDp-Kplus_PIDK)<0. && Piminus_PIDp<0. && Piplus_PIDp<0.){
+								  if(Kstb_M<1600. && Kst_M<1600.){
+									  if(Kstb_PT>900. && Kst_PT>900.){
+										  if(Kstb_ENDVERTEX_CHI2<9. && Kst_ENDVERTEX_CHI2<9.){
+											  if(Kstb_DIRA_OWNPV>0. && Kst_DIRA_OWNPV>0.){
+												  if(Piplus_isMuon==0 && Piminus_isMuon==0 && Kplus_isMuon==0 && Kminus_isMuon == 0){
+													  
+														//Rellenamos los histogramas
+															H_pim_PT_MC->Fill(Piminus_PT);
+															H_pip_PT_MC->Fill(Piplus_PT);
+															H_Kp_PT_MC->Fill(Kplus_PT);
+															H_Km_PT_MC->Fill(Kminus_PT);
+															H_Kst_PT_MC->Fill(Kst_PT);
+															H_Kstb_PT_MC->Fill(Kstb_PT);
+															H_Kst_M_MC->Fill(Kst_M);
+															H_Kstb_M_MC->Fill(Kstb_M);
+															H_InvMass_MC->Fill(B_s0_MM);
+											      }
+											  }
+								          }
+								      }
+							      }
+						      }
+				          }
+				      }
+			      }
+	          }
+          }
+      }      			
+   }   
    
 cout << endl;	
 std::cout<< "100" << "%   ¡Complete!  " << std::flush << "\r" << endl;
