@@ -66,10 +66,435 @@ void AnalyzerDBsKsKs::Loop(){
 	  printProgBar(jentry*100./nentries);
 	  
 	  
-      //---------------------------selection process: ---------------------------------------------------------
+      //---------------------------selection process levels: ---------------------------------------------------------
       
-      
-      //First selection in data:-----------------------------------------------------------------------------------------
+/*LEVEL 1;*/      
+      //LEVEL 1: Pt cuts:-------------------------------------------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500.){
+			 
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  }
+	  
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500.){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  }
+
+/*LEVEL 2;   
+      //LEVEL 2: Primary Vertex cuts:--------------------------------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500. && pip_IPCHI2_OWNPV>36. && 
+            Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36.){
+				  
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  } 
+	  	  
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500. && 
+		    Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36.){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  }  
+*/
+/*LEVEL 3;   
+      //LEVEL 3: PIDk of kplus kminus piplus piminus cuts:-----------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500. && pip_IPCHI2_OWNPV>36. && 
+            Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36. && Km_PIDK>2. && Kp_PIDK>2. &&
+            pip_PIDK<0. && pim_PIDK<0.){
+				  
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  }
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500. && 
+		    Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36. &&
+		    Kminus_PIDK>2. && Kplus_PIDK>2.){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  }  
+*/
+/*LEVEL 4;   
+      //LEVEL 4: Good track reconstruction cuts:----------------------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500. && pip_IPCHI2_OWNPV>36. && 
+            Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36. && Km_PIDK>2. && Kp_PIDK>2. &&
+            pip_PIDK<0. && pim_PIDK<0. && pip_TRACK_CHI2NDOF<5 && Km_TRACK_CHI2NDOF<5 && pim_TRACK_CHI2NDOF<5 && Kp_TRACK_CHI2NDOF<5){
+				  
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  }
+	  
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500. && 
+		    Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36. &&
+		    Kminus_PIDK>2. && Kplus_PIDK>2. && Piplus_TRACK_CHI2NDOF<5 && Kminus_TRACK_CHI2NDOF<5 && Piminus_TRACK_CHI2NDOF<5 && Kplus_TRACK_CHI2NDOF<5){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  }  
+*/
+/*LEVEL 5;     
+      //LEVEL 5: Protons veto cuts:----------------------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500. && pip_IPCHI2_OWNPV>36. && 
+            Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36. && Km_PIDK>2. && Kp_PIDK>2. &&
+            pip_PIDK<0. && pim_PIDK<0. && pip_TRACK_CHI2NDOF<5 && Km_TRACK_CHI2NDOF<5 && pim_TRACK_CHI2NDOF<5 && Kp_TRACK_CHI2NDOF<5 &&
+            (Km_PIDp-Km_PIDK)<0. && (Kp_PIDp-Kp_PIDK)<0. && pim_PIDp<0. && pip_PIDp<0.){
+				  
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  }
+
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500. && 
+		    Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36. &&
+		    Kminus_PIDK>2. && Kplus_PIDK>2. && Piplus_TRACK_CHI2NDOF<5 && Kminus_TRACK_CHI2NDOF<5 && Piminus_TRACK_CHI2NDOF<5 && Kplus_TRACK_CHI2NDOF<5 &&
+		    (Kminus_PIDp-Kminus_PIDK)<0. && (Kplus_PIDp-Kplus_PIDK)<0. && Piminus_PIDp<0. && Piplus_PIDp<0.){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  }  
+*/	  
+/*LEVEL 6;	        
+      //LEVEL 6: Kst and kstb mass cuts:----------------------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500. && pip_IPCHI2_OWNPV>36. && 
+            Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36. && Km_PIDK>2. && Kp_PIDK>2. &&
+            pip_PIDK<0. && pim_PIDK<0. && pip_TRACK_CHI2NDOF<5 && Km_TRACK_CHI2NDOF<5 && pim_TRACK_CHI2NDOF<5 && Kp_TRACK_CHI2NDOF<5 &&
+            (Km_PIDp-Km_PIDK)<0. && (Kp_PIDp-Kp_PIDK)<0. && pim_PIDp<0. && pip_PIDp<0. && Kstb_M<1600. && Kst_M<1600.){
+				  
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  } 
+
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500. && 
+		    Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36. &&
+		    Kminus_PIDK>2. && Kplus_PIDK>2. && Piplus_TRACK_CHI2NDOF<5 && Kminus_TRACK_CHI2NDOF<5 && Piminus_TRACK_CHI2NDOF<5 && Kplus_TRACK_CHI2NDOF<5 &&
+		    (Kminus_PIDp-Kminus_PIDK)<0. && (Kplus_PIDp-Kplus_PIDK)<0. && Piminus_PIDp<0. && Piplus_PIDp<0. &&
+		    Kstb_M<1600. && Kst_M<1600.){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  } 
+*/
+/*LEVEL 7;	  
+	  //LEVEL 7: Kst and kstb PT cuts:------------------------------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500. && pip_IPCHI2_OWNPV>36. && 
+            Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36. && Km_PIDK>2. && Kp_PIDK>2. &&
+            pip_PIDK<0. && pim_PIDK<0. && pip_TRACK_CHI2NDOF<5 && Km_TRACK_CHI2NDOF<5 && pim_TRACK_CHI2NDOF<5 && Kp_TRACK_CHI2NDOF<5 &&
+            (Km_PIDp-Km_PIDK)<0. && (Kp_PIDp-Kp_PIDK)<0. && pim_PIDp<0. && pip_PIDp<0. && Kstb_M<1600. && Kst_M<1600. &&
+            Kstb_PT>900. && Kst_PT>900.){
+				  
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  }
+	  
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500. && 
+		    Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36. &&
+		    Kminus_PIDK>2. && Kplus_PIDK>2. && Piplus_TRACK_CHI2NDOF<5 && Kminus_TRACK_CHI2NDOF<5 && Piminus_TRACK_CHI2NDOF<5 && Kplus_TRACK_CHI2NDOF<5 &&
+		    (Kminus_PIDp-Kminus_PIDK)<0. && (Kplus_PIDp-Kplus_PIDK)<0. && Piminus_PIDp<0. && Piplus_PIDp<0. &&
+		    Kstb_M<1600. && Kst_M<1600. && Kstb_PT>900. && Kst_PT>900.){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  } 	  
+*/
+/*LEVEL 8;	  
+	  //LEVEL 8: Fit tool vertex chi2 kst and kstb cuts:----------------------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500. && pip_IPCHI2_OWNPV>36. && 
+            Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36. && Km_PIDK>2. && Kp_PIDK>2. &&
+            pip_PIDK<0. && pim_PIDK<0. && pip_TRACK_CHI2NDOF<5 && Km_TRACK_CHI2NDOF<5 && pim_TRACK_CHI2NDOF<5 && Kp_TRACK_CHI2NDOF<5 &&
+            (Km_PIDp-Km_PIDK)<0. && (Kp_PIDp-Kp_PIDK)<0. && pim_PIDp<0. && pip_PIDp<0. && Kstb_M<1600. && Kst_M<1600. &&
+            Kstb_PT>900. && Kst_PT>900.&& Kstb_ENDVERTEX_CHI2<9. && Kst_ENDVERTEX_CHI2<9.){
+				  
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  }
+
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500. && 
+		    Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36. &&
+		    Kminus_PIDK>2. && Kplus_PIDK>2. && Piplus_TRACK_CHI2NDOF<5 && Kminus_TRACK_CHI2NDOF<5 && Piminus_TRACK_CHI2NDOF<5 && Kplus_TRACK_CHI2NDOF<5 &&
+		    (Kminus_PIDp-Kminus_PIDK)<0. && (Kplus_PIDp-Kplus_PIDK)<0. && Piminus_PIDp<0. && Piplus_PIDp<0. &&
+		    Kstb_M<1600. && Kst_M<1600. && Kstb_PT>900. && Kst_PT>900. && Kstb_ENDVERTEX_CHI2<9. && Kst_ENDVERTEX_CHI2<9.){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  } 		  
+*/
+/*LEVEL 9;
+	  //LEVEL 9: DIRA kst and kstb cuts:---------------------------------------------------------
+      if(Type == "Data"){
+         if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500. && pip_IPCHI2_OWNPV>36. && 
+            Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36. && Km_PIDK>2. && Kp_PIDK>2. &&
+            pip_PIDK<0. && pim_PIDK<0. && pip_TRACK_CHI2NDOF<5 && Km_TRACK_CHI2NDOF<5 && pim_TRACK_CHI2NDOF<5 && Kp_TRACK_CHI2NDOF<5 &&
+            (Km_PIDp-Km_PIDK)<0. && (Kp_PIDp-Kp_PIDK)<0. && pim_PIDp<0. && pip_PIDp<0. && Kstb_M<1600. && Kst_M<1600. &&
+            Kstb_PT>900. && Kst_PT>900.&& Kstb_ENDVERTEX_CHI2<9. && Kst_ENDVERTEX_CHI2<9.&& Kstb_DIRA_OWNPV>0. && Kst_DIRA_OWNPV>0.){
+				  
+				//Construcción de los cutrivectores
+				kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
+				kminus.SetPxPyPzE(Km_PX,Km_PY,Km_PZ,Km_PE);
+				piplus.SetPxPyPzE(pip_PX,pip_PY,pip_PZ,pip_PE);
+				piminus.SetPxPyPzE(pim_PX,pim_PY,pim_PZ,pim_PE);
+										
+				//calculo masa invariante de los cuatro cuerpos
+				Mkpikpi=(kplus+piminus+kminus+piplus).M();
+				H_InvMass_Data->Fill(Mkpikpi);
+													 
+				H_pim_PT_Data->Fill(pim_PT);
+				H_pip_PT_Data->Fill(pip_PT);
+			    H_Kp_PT_Data->Fill(Kp_PT);
+				H_Km_PT_Data->Fill(Km_PT);
+			    H_Kst_PT_Data->Fill(Kst_PT);
+				H_Kstb_PT_Data->Fill(Kstb_PT);
+				H_Kst_M_Data->Fill(Kst_M);
+				H_Kstb_M_Data->Fill(Kstb_M);
+		 }
+	  }	  
+
+	  if(Type == "MC"){
+		 if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500. && 
+		    Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36. &&
+		    Kminus_PIDK>2. && Kplus_PIDK>2. && Piplus_TRACK_CHI2NDOF<5 && Kminus_TRACK_CHI2NDOF<5 && Piminus_TRACK_CHI2NDOF<5 && Kplus_TRACK_CHI2NDOF<5 &&
+		    (Kminus_PIDp-Kminus_PIDK)<0. && (Kplus_PIDp-Kplus_PIDK)<0. && Piminus_PIDp<0. && Piplus_PIDp<0. &&
+		    Kstb_M<1600. && Kst_M<1600. && Kstb_PT>900. && Kst_PT>900. && Kstb_ENDVERTEX_CHI2<9. && Kst_ENDVERTEX_CHI2<9. &&
+		    Kstb_DIRA_OWNPV>0. && Kst_DIRA_OWNPV>0.){
+			 
+			   //Rellenamos los histogramas
+			   H_pim_PT_MC->Fill(Piminus_PT);
+			   H_pip_PT_MC->Fill(Piplus_PT);
+			   H_Kp_PT_MC->Fill(Kplus_PT);
+			   H_Km_PT_MC->Fill(Kminus_PT);
+			   H_Kst_PT_MC->Fill(Kst_PT);
+			   H_Kstb_PT_MC->Fill(Kstb_PT);
+			   H_Kst_M_MC->Fill(Kst_M);
+			   H_Kstb_M_MC->Fill(Kstb_M);
+			   H_InvMass_MC->Fill(B_s0_MM);
+		 }
+	  } 
+*/	  	    
+/*LEVEL 10;   
+      //LEVEL 10; (veto to muons) Final cuts:-----------------------------------------------------------------------------------------
       if(Type == "Data"){
 		  //tracks_pt. Limites al momento de las particulas finales k (+,-) pion (+,-) 
 		  if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500.){
@@ -130,7 +555,7 @@ void AnalyzerDBsKsKs::Loop(){
           }
       }      			
       
-      //Firts selection in MonteCarlo:-----------------------------------------------------------------------------------------
+      //LEVEL 10; (veto to muons) Final cuts MC:-----------------------------------------------------------------------------------------
       if(Type == "MC"){
 		  if(Piplus_PT>500. && Kminus_PT>500. && Piminus_PT>500. && Kplus_PT>500.){
 			  if(Piplus_IPCHI2_OWNPV>36. && Kminus_IPCHI2_OWNPV>36. && Piminus_IPCHI2_OWNPV>36. && Kplus_IPCHI2_OWNPV>36.){
@@ -165,9 +590,10 @@ void AnalyzerDBsKsKs::Loop(){
 			      }
 	          }
           }
-      }      			
-   }   
-   
+      }      			  
+*/   
+   }
+ 
 cout << endl;	
 std::cout<< "100" << "%   ¡Complete!  " << std::flush << "\r" << endl;
 

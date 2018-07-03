@@ -53,15 +53,15 @@ void PlotterBsKsKs(TString var){
   data->Draw("pesame");
   leg->Draw();
 
-  if(var == "InvMass")	    xt = ("M_{k #pi k #pi} [GeV]");
-  if(var == "pip_PT")       xt = ("PT_{pip} [GeV]^{2}");
-  if(var == "pim_PT")       xt = ("PT_{pim} [GeV]^{2}");
-  if(var == "Kp_PT")        xt = ("PT_{Kp} [GeV]^{2}");
-  if(var == "Km_PT")        xt = ("PT_{Km} [GeV]^{2}");
-  if(var == "Kst_PT")       xt = ("PT_{Kst} [GeV]^{2}");
-  if(var == "Kstb_PT")      xt = ("PT_{Kstb} [GeV]^{2}");
-  if(var == "Kst_M")        xt = ("PT_{Kst} [GeV]^{2}");
-  if(var == "Kstb_M")       xt = ("M_{Kstb} [GeV]");
+  if(var == "InvMass")	    xt = ("M_{k #pi k #pi} [GeV]");     //hStack->SetMaximum(2800);
+  if(var == "pip_PT")       xt = ("PT_{pip} [GeV]^{2}");		//hStack->SetMaximum(4200);
+  if(var == "pim_PT")       xt = ("PT_{pim} [GeV]^{2}");        //hStack->SetMaximum(4200);
+  if(var == "Kp_PT")        xt = ("PT_{Kp} [GeV]^{2}");         //hStack->SetMaximum(2200);
+  if(var == "Km_PT")        xt = ("PT_{Km} [GeV]^{2}");         //hStack->SetMaximum(2200);
+  if(var == "Kst_PT")       xt = ("PT_{Kst} [GeV]^{2}");        //hStack->SetMaximum(2600);
+  if(var == "Kstb_PT")      xt = ("PT_{Kstb} [GeV]^{2}");       //hStack->SetMaximum(2600);
+  if(var == "Kst_M")        xt = ("PT_{Kst} [GeV]^{2}");        //hStack->SetMaximum(2000);
+  if(var == "Kstb_M")       xt = ("M_{Kstb} [GeV]");            //hStack->SetMaximum(1900);
 
   hStack->GetXaxis()->SetTitle(xt);
   hStack->GetYaxis()->SetTitle("Counts");
