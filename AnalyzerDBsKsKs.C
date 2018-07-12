@@ -68,7 +68,7 @@ void AnalyzerDBsKsKs::Loop(){
 	  
       //---------------------------selection process levels: ---------------------------------------------------------
       
-/*LEVEL 1;*/      
+/*LEVEL 1;      
       //LEVEL 1: Pt cuts:-------------------------------------------------------------------
       if(Type == "Data"){
          if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500.){
@@ -109,7 +109,7 @@ void AnalyzerDBsKsKs::Loop(){
 			   H_InvMass_MC->Fill(B_s0_MM);
 		 }
 	  }
-
+*/
 /*LEVEL 2;   
       //LEVEL 2: Primary Vertex cuts:--------------------------------------------------------
       if(Type == "Data"){
@@ -493,7 +493,7 @@ void AnalyzerDBsKsKs::Loop(){
 		 }
 	  } 
 */	  	    
-/*LEVEL 10;   
+/*LEVEL 10;*/   
       //LEVEL 10; (veto to muons) Final cuts:-----------------------------------------------------------------------------------------
       if(Type == "Data"){
 		  //tracks_pt. Limites al momento de las particulas finales k (+,-) pion (+,-) 
@@ -591,7 +591,7 @@ void AnalyzerDBsKsKs::Loop(){
 	          }
           }
       }      			  
-*/   
+  
    }
  
 cout << endl;	

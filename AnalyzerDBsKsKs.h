@@ -1474,7 +1474,31 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain = tree;
    fCurrent = -1;
    fChain->SetMakeClass(1);
-
+   fChain->SetBranchStatus("*", 0);
+   
+   const int nBranch = 2;
+   const TString BranchActivated[nBranch] = {"pip_PT", "Km_PT", "pim_PT", "Kp_PT", \
+	   "pip_IPCHI2_OWNPV", "Km_IPCHI2_OWNPV", "pim_IPCHI2_OWNPV", "Kp_IPCHI2_OWNPV", \
+	   "Km_PIDK", "Kp_PIDK", "pip_PIDK", "pim_PIDK", "pip_TRACK_CHI2NDOF", "Km_TRACK_CHI2NDOF", "pim_TRACK_CHI2NDOF", "Kp_TRACK_CHI2NDOF", \
+	   "Km_PIDp", "Km_PIDK", "Kp_PIDp", "Kp_PIDK", "pim_PIDp", "pip_PIDp", \
+	   "Kstb_M", "Kst_M", "Kstb_PT", "Kst_PT", "Kstb_ENDVERTEX_CHI2", "Kst_ENDVERTEX_CHI2", \
+	   "Kstb_DIRA_OWNPV", "Kst_DIRA_OWNPV", "pip_isMuon", "pim_isMuon", "Kp_isMuon", "Km_isMuon", \
+	   "Kp_PX", "Kp_PY", "Kp_PZ", "Kp_PE", \
+	   "Km_PX", "Km_PY", "Km_PZ", "Km_PE", \
+	   "pim_PX", "pim_PY", "pim_PZ", "pim_PE", \
+	   "pip_PX", "pip_PY", "pip_PZ", "pip_PE", \
+	   "Piplus_PT", "Kminus_PT", "Piminus_PT", "Kplus_PT", \
+	   "Piplus_IPCHI2_OWNPV", "Kminus_IPCHI2_OWNPV", "Piminus_IPCHI2_OWNPV", "Kplus_IPCHI2_OWNPV", \
+	   "Kminus_PIDK", "Kplus_PIDK", "Piplus_PIDK", "Piminus_PIDK", \
+	   "Piplus_TRACK_CHI2NDOF", "Kminus_TRACK_CHI2NDOF", "Piminus_TRACK_CHI2NDOF", "Kplus_TRACK_CHI2NDOF", \
+	   "Kminus_PIDp", "Kminus_PIDK", "Kplus_PIDp", "Kplus_PIDK", "Piminus_PIDp", "Piplus_PIDp", \
+	   "Piplus_isMuon", "Piminus_isMuon", "Kplus_isMuon", "Kminus_isMuon", "B_s0_MM"};
+   
+   for (auto i = nBranch; i < nBranch; ++i){
+		fChain->SetBranchStatus(BranchActivated[i], 1);
+   };
+   
+/*   
    fChain->SetBranchAddress("Bs_LOKI_ENERGY", &Bs_LOKI_ENERGY, &b_Bs_LOKI_ENERGY);
    fChain->SetBranchAddress("Bs_LOKI_ETA", &Bs_LOKI_ETA, &b_Bs_LOKI_ETA);
    fChain->SetBranchAddress("Bs_LOKI_PHI", &Bs_LOKI_PHI, &b_Bs_LOKI_PHI);
@@ -2157,6 +2181,7 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetBranchAddress("nMuonCoordsS4", &nMuonCoordsS4, &b_nMuonCoordsS4);
    fChain->SetBranchAddress("nMuonTracks", &nMuonTracks, &b_nMuonTracks);
    fChain->SetBranchAddress("StrippingBs2K0stK0stNominalLineDecision", &StrippingBs2K0stK0stNominalLineDecision, &b_StrippingBs2K0stK0stNominalLineDecision);
+*/
    Notify();
 }
 
