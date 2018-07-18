@@ -791,7 +791,7 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
    fChain->SetMakeClass(1);
    fChain->SetBranchStatus("*", 0);
    
-   const int nBranch = 75;
+   const int nBranch = 77;
    const TString BranchActivated[nBranch] = {"pip_PT", "Km_PT", "pim_PT", "Kp_PT",
 	   "pip_IPCHI2_OWNPV", "Km_IPCHI2_OWNPV", "pim_IPCHI2_OWNPV", "Kp_IPCHI2_OWNPV",
 	   "Km_PIDK", "Kp_PIDK", "pip_PIDK", "pim_PIDK", 
@@ -811,7 +811,7 @@ void AnalyzerDBsKsKs::Init(TTree *tree){
 	   "Kminus_PIDp", "Kminus_PIDK", "Kplus_PIDp", "Kplus_PIDK", "Piminus_PIDp", "Piplus_PIDp",
 	   "Piplus_isMuon", "Piminus_isMuon", "Kplus_isMuon", "Kminus_isMuon", "B_s0_MM"};
    
-   for (auto i = nBranch; i < nBranch; ++i){
+   for (auto i = 0; i < nBranch; ++i){
 		fChain->SetBranchStatus(BranchActivated[i], 1);
    };
    
