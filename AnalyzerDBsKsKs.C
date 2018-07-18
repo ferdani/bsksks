@@ -7,10 +7,7 @@
 
 //histogramas--------------------------------------------------------------------------------------------------
 
-
-//Masa invariante de los cuatro cuerpos
 TH1F* H_InvMass_Data = new TH1F("H_InvMass_Data", "Invariant Mass kpikpi", 100, 4700, 6000);
-//Histogramas de las variables
 TH1F* H_pip_PT_Data = new TH1F("H_pip_PT_Data", "PT of pion plus", 100, 0, 8000);
 TH1F* H_pim_PT_Data = new TH1F("H_pim_PT_Data", "PT of pion minus", 100, 0, 8000);
 TH1F* H_Kp_PT_Data = new TH1F("H_Kp_PT_Data", "PT of kaon plus", 100, 0, 7000);
