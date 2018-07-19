@@ -40,12 +40,12 @@ Cantidad de señal frente a eventos totales (señal+fondo)
 '''
 #Tomamos como sucesos de señal los propios del MonteCarlo
 
-TotalYieldsMC = [806141.9 , 81294.93 , 81294.93 , 81294.93 , 24835.16 , 9731.72 , 9731.72 , 9731.72 , 9394.57 , 7947.09]  
+TotalYieldsMC = [107078.0 , 73569.0 , 73569.0 , 73569.0 , 45925.0 , 45750.0 , 45750.0 , 45750.0 , 43929.0 , 41213.0]  
 
 SignalTotalResults = np.array([])
 
 def RatioSignalTotal(MCcounts):
-    count = MCcounts/806141.9
+    count = MCcounts/107078.0
     return count 
 
 for i in range(0,len(TotalYieldsMC)):
@@ -66,5 +66,14 @@ plt.xticks(range(len(SignalTotalResults)), TotalLevels)
 plt.setp( ax.xaxis.get_majorticklabels(), rotation=-90 , fontsize=8) 
 plt.plot(Acumulative*100, color='r', marker='o' , linestyle='-', linewidth=1, label='Bkg rejection')
 plt.plot(SignalTotalResults*100, color='b', marker='o' , linestyle='-', linewidth=1, label='Signal Yield')
-plt.legend(prop={'size': 10}, loc="center right")
+
+ax.annotate('99.65 % Backgroud Rejection', xy=(9, 98), xytext=(8.0, 85.0), 
+            textcoords='data', size=12, va="center", ha="center", bbox=dict(boxstyle="round", fc="w"), 
+            arrowprops=dict(arrowstyle="-|>", connectionstyle="arc3,rad=+0.2", fc="w"), )
+
+ax.annotate('38.49 % Signal Yields', xy=(9, 40), xytext=(8.5, 55.0),
+            textcoords='data', size=12, va="bottom", ha="center", bbox=dict(boxstyle="round", fc="w"), 
+            arrowprops=dict(arrowstyle="-|>", connectionstyle="arc3,rad=+0.2", fc="w"), )
+
+plt.legend(loc='left', bbox_to_anchor=(1, 0.2), prop={'size': 10})
 plt.grid(True)
