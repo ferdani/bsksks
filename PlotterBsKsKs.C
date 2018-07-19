@@ -69,7 +69,7 @@ void PlotterBsKsKs(TString var){
 
   mylatex = new TLatex();
   mylatex->SetTextSize(0.04);
-  mylatex->DrawLatexNDC(0.17, 0.91, "#font[12]{L=50 pb^{-1}} #sqrt{#font[12]{s}}#font[12]{= 7 TeV}");
+  mylatex->DrawLatexNDC(0.17, 0.91, "#font[12]{L=1,665 fb^{-1}} #sqrt{#font[12]{s}}#font[12]{= 13 TeV}");
 
   gSystem->mkdir(outputDir, true);
 
