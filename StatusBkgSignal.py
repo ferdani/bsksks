@@ -65,7 +65,7 @@ ax.set_xlabel(r'Levels of cuts', fontsize=20)
 plt.xticks(range(len(SignalTotalResults)), TotalLevels)
 plt.setp( ax.xaxis.get_majorticklabels(), rotation=-90 , fontsize=8) 
 plt.plot(Acumulative*100, color='r', marker='o' , linestyle='-', linewidth=1, label='Bkg rejection')
-plt.plot(SignalTotalResults*100, color='b', marker='o' , linestyle='-', linewidth=1, label='Signal Yield')
+plt.plot(SignalTotalResults*100, color='b', marker='o' , linestyle='-', linewidth=1, label='Signal Yields')
 
 ax.annotate('99.65 % Backgroud Rejection', xy=(9, 98), xytext=(8.0, 85.0), 
             textcoords='data', size=12, va="center", ha="center", bbox=dict(boxstyle="round", fc="w"), 

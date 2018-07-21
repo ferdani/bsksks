@@ -496,7 +496,7 @@ void AnalyzerDBsKsKs::Loop(){
 		  //tracks_pt. Limites al momento de las particulas finales k (+,-) pion (+,-) 
 		  if(pip_PT>500. && Km_PT>500. && pim_PT>500. && Kp_PT>500.){
 			  //tracks_chi2. La reconstrucción de la traza debe tener una desviación cuadrática de 6 sigmas en cuanto
-			  //a que proceda del vértice primario las cuatro partículas finales. Los K generados no vuelan por lo que 
+			  //a que proceda del vértice secundario las cuatro partículas finales. Los K generados no vuelan por lo que 
 			  //sus productos de desintegracion salen del mismo punto
 			  if(pip_IPCHI2_OWNPV>36. && Km_IPCHI2_OWNPV>36. && pim_IPCHI2_OWNPV>36. && Kp_IPCHI2_OWNPV>36.){
 				  //pid_kaons. De acuerdo a la definición del particle identification (vease apuntes de Juan Saborido)
