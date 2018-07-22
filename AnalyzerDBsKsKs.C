@@ -519,7 +519,7 @@ void AnalyzerDBsKsKs::Loop(){
 											  //Ks_DIRA
 											  if(Kstb_DIRA_OWNPV>0. && Kst_DIRA_OWNPV>0.){
 												  //Veto a muones. No queremos que ninguna de nuestras particulas sea un muon
-												  if(pip_isMuon==0 && pim_isMuon==0 && Kp_isMuon==0 && Km_isMuon == 0){
+												  if(pip_isMuon==0 && pim_isMuon==0 && Kp_isMuon==0 && Km_isMuon==0){
 													  
 													  //Construcción de los cutrivectores
 													  kplus.SetPxPyPzE(Kp_PX,Kp_PY,Kp_PZ,Kp_PE);
