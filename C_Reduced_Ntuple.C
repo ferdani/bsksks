@@ -18,9 +18,10 @@ TCut cuts4() {
   TCut cuts_D = cuts_Ks_mass + cuts_Ks_pt + cuts_Ks_Vchi2ndof + cuts_Ks_DIRA ;
 
   TCut cuts_muons = "pip_isMuon==0 && pim_isMuon==0 && Kp_isMuon==0 && Km_isMuon==0" ;
-
+  
+  //TCut cuts_B = " " ; #change the final name of the tree if you put this line
   TCut cuts_B = "(Bs_M<5200. || Bs_M>5500.)" ;
-
+  
   //TCut cuts_GL = " && GLKsb.>0.22" ;                                             
   TCut cuts_GL = "" ;
 
@@ -56,22 +57,24 @@ Double_t doca( Double_t x1, Double_t y1, Double_t z1, Double_t xp1, Double_t yp1
 
 void C_Reduce_Ntuple() {
 
-
+   cout << "Implementing the DecayTree ..." << endl;
    TFile *fold = TFile::Open("/home3/daniel.fernandez/Arboles/DTT_2016_Reco16Strip28_Up_BHADRON.root");
-   //TFile *fold = TFile::Open("/home3/daniel.fernandez/Arboles/DTT_2016_Reco16Strip28_Down_BHADRON.root");                                                            
-
+   //TFile *fold = TFile::Open("/home3/daniel.fernandez/Arboles/DTT_2016_Reco16Strip28_Down_BHADRON.root");  
+                                                             
    TTree *Told = (TTree*)fold->Get("Bs2KpiKpi/DecayTree");
    //TTree *Told = (TTree*)fold->Get("DecayTree");                                 
-
+   
+   cout << "Download cuts ..." << endl;
    TCut cortes = cuts4() ;
 
    TFile *fnew = TFile::Open("BkgWindow_Podao_DTT_2016_Reco16Strip2_Up_BHADRON.root","recreate");
    //TFile *fnew = TFile::Open("BkgWindow_Podao_DTT_2016_Reco16Strip2_Down_BHADRON.root","recreate");
    TTree *Tnew = Told->CopyTree(cortes);
    //TTree *Tnew = Told->CopyTree("Kstb_M<1600. && Kst_M<1600.");                  
-
+   
+   cout << "Writing the tree ..." << endl;
+   
    Tnew->Write();
-   fnew->Write();
    fnew->Close();
    fold->Close();
    delete fnew;

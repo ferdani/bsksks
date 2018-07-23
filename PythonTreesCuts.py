@@ -55,3 +55,14 @@ TreeCuts = rn.array2root(TreeConcatenate, 'BkgWindow_Podao_DTT_2016_Reco16Strip2
 t1 = time.time()
 
 print(r'Total CPU time: %i sec' %(t1-t0))
+
+'''                                                                                                    
+#Para sumar con Python dos trees podemos hacer esto, con todas las branches.                           
+                                                                                                       
+TreeOriginal1 = rn.root2array('/home3/daniel.fernandez/bsksks/BkgWindow_Podao_DTT_2016_Reco16Strip2_Up_BHADRON.root' , 'DecayTree')                                                                          
+TreeOriginal2 = rn.root2array('/home3/daniel.fernandez/bsksks/BkgWindow_Podao_DTT_2016_Reco16Strip2_Down_BHADRON.root' , 'DecayTree')                                                                       
+                                                                                                       
+TreeConcatenate = np.concatenate((TreeOriginal1,TreeOriginal2), axis=0)                                
+                                                                                                       
+TreeCuts = rn.array2root(TreeConcatenate, 'BkgWindow_Podao_DTT_2016_Reco16Strip2_Up+Down_BHADRON.root', 'DecayTree', 'recreate')                                                                             
+'''
