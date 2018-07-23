@@ -4,10 +4,11 @@
 Created on Wed Jul 18 15:24:59 2018
 
 @author: macbookpro
+
+Python 3.6 (not 2.7)
 """
 import numpy as np
 import matplotlib.pyplot as plt
-import math 
 
 #======================= Levels distintos con cada corte ==========================================================
 TotalLevels = ["PT cuts" , "Primary vertex cuts" , "PIDk of k+ k- pi+ pi-" , "Good track reconstruction cuts" ,\
@@ -51,8 +52,6 @@ def RatioSignalTotal(MCcounts):
 for i in range(0,len(TotalYieldsMC)):
     SignalTotalResults = np.append(SignalTotalResults, RatioSignalTotal(TotalYieldsMC[i]))
     
-print(Acumulative)
-print(SignalTotalResults)
 #============================================ Plot ===============================================================
 #plots
 fig=plt.figure(figsize=(20,10))
@@ -75,5 +74,8 @@ ax.annotate('38.49 % Signal Yields', xy=(9, 40), xytext=(8.5, 55.0),
             textcoords='data', size=12, va="bottom", ha="center", bbox=dict(boxstyle="round", fc="w"), 
             arrowprops=dict(arrowstyle="-|>", connectionstyle="arc3,rad=+0.2", fc="w"), )
 
-plt.legend(loc='left', bbox_to_anchor=(1, 0.2), prop={'size': 10})
+plt.legend(bbox_to_anchor=(1, 0.2), prop={'size': 10})
 plt.grid(True)
+
+plt.savefig('StatusBkgSignal.png')
+plt.savefig('StatusBkgSignal.pdf')
