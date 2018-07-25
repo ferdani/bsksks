@@ -1,11 +1,11 @@
 
 For the training do;
 
- python m-BDT_trainer_v03.py
+ python Dani_m-BDT_trainer.py
 
 To evaluate the TMVA methods and include them in the ntuple do:
 
- python m-BDT_evaluator_v03.py
+ python Dani-BDT_evaluator.py
 
 For the interactive session do the following from the root prompt
 
