@@ -1,0 +1,14 @@
+
+For the training do;
+
+ python m-BDT_trainer_v03.py
+
+To evaluate the TMVA methods and include them in the ntuple do:
+
+ python m-BDT_evaluator_v03.py
+
+For the interactive session do the following from the root prompt
+
+ root [0] TMVA::TMVAGui("TMVA.root");
+
+

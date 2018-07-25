@@ -1,0 +1,154 @@
+[?1034h
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+[#1] INFO:Eval -- RooTreeDataStore::loadValues(data) Ignored 1413 out of range events
+[#1] INFO:Eval -- RooTreeDataStore::loadValues(data_forPartReco) Ignored 6039 out of range events
+[#1] INFO:Eval -- RooTreeDataStore::loadValues(data_forCombinat) Ignored 7773 out of range events
+[#1] INFO:Minization -- RooMinimizer::optimizeConst: activating const optimization
+[#1] INFO:Minization --  The following expressions have been identified as constant and will be precalculated and cached: (Bd2KstKst)
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (Bs2KstKst,CombBackg,PartRecon)
+ **********
+ **    1 **SET PRINT           1
+ **********
+ **********
+ **    2 **SET NOGRAD
+ **********
+ PARAMETER DEFINITIONS:
+    NO.   NAME         VALUE      STEP SIZE      LIMITS
+     1 bd2kstkst_yield   5.00000e+02  2.50000e+02    0.00000e+00  1.00000e+05
+     2 bkg_exp_p   -1.00000e-03  5.00000e-04   -1.00000e-02  0.00000e+00
+     3 bs2kstkst_mu   5.37000e+03  2.00000e+00    5.36000e+03  5.38000e+03
+     4 bs2kstkst_sigma   1.70000e+01  1.00000e+00    1.50000e+01  2.50000e+01
+     5 bs2kstkst_yield   2.00000e+03  1.00000e+03    0.00000e+00  1.00000e+05
+     6 combbackg_yield   5.00000e+01  2.50000e+01    0.00000e+00  1.00000e+05
+     7 part_reco_c  -1.00000e+01  4.97500e+00   -1.00000e+02 -5.00000e-02
+     8 part_reco_p   5.22000e+03  1.00000e+01    5.20000e+03  5.30000e+03
+     9 partrecon_yield   5.00000e+01  2.50000e+01    0.00000e+00  1.00000e+05
+ **********
+ **    3 **SET ERR         0.5
+ **********
+ **********
+ **    4 **SET PRINT           1
+ **********
+ **********
+ **    5 **SET STR           1
+ **********
+ NOW USING STRATEGY  1: TRY TO BALANCE SPEED AGAINST RELIABILITY
+ **********
+ **    6 **MIGRAD        4500           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-5839.17 FROM MIGRAD    STATUS=INITIATE       34 CALLS          35 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  bd2kstkst_yield   5.00000e+02   2.50000e+02   3.66903e-02  -7.04867e+03
+   2  bkg_exp_p   -1.00000e-03   5.00000e-04   1.72186e-01  -1.72767e+00
+   3  bs2kstkst_mu   5.37000e+03   2.00000e+00   2.01358e-01   2.46008e+02
+   4  bs2kstkst_sigma   1.70000e+01   1.00000e+00   2.57889e-01  -3.01708e+02
+   5  bs2kstkst_yield   2.00000e+03   1.00000e+03   7.39156e-02  -1.05167e+04
+   6  combbackg_yield   5.00000e+01   2.50000e+01   1.15775e-02  -3.72965e+04
+   7  part_reco_c  -1.00000e+01   4.97500e+00   1.71756e-01  -3.64020e+01
+   8  part_reco_p   5.22000e+03   1.00000e+01   2.57889e-01   2.45267e+01
+   9  partrecon_yield   5.00000e+01   2.50000e+01   1.15775e-02  -5.24792e+04
+                               ERR DEF= 0.5
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.018 added to diagonal of error matrix
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-11871.6 FROM MIGRAD    STATUS=CONVERGED     741 CALLS         742 TOTAL
+                     EDM=0.000101153    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  bd2kstkst_yield   4.16343e+02   3.28880e+01   3.32589e-04   8.24719e-01
+   2  bkg_exp_p   -2.90996e-03   1.82963e-04   1.65121e-03   6.05880e-02
+   3  bs2kstkst_mu   5.36651e+03   3.92215e-01   3.12151e-03   3.64736e-02
+   4  bs2kstkst_sigma   1.97885e+01   4.02676e-01   5.71234e-03   1.71362e-02
+   5  bs2kstkst_yield   3.10609e+03   6.21456e+01   2.56093e-04   4.23757e-03
+   6  combbackg_yield   2.67611e+03   1.57141e+02   2.84823e-04   2.28766e+00
+   7  part_reco_c  -3.04669e+01   9.56056e+00   8.22857e-03   1.98810e-03
+   8  part_reco_p   5.23234e+03   1.04192e+00   1.65328e-03   1.12376e-01
+   9  partrecon_yield   4.11951e+02   1.20061e+02   4.71979e-04  -1.02267e+00
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  9    ERR DEF=0.5
+  1.082e+03 -2.107e-03  8.086e-01  2.378e-01  1.014e+02 -2.465e+03  1.195e+02  1.670e+00 -1.699e+03 
+ -2.107e-03  3.349e-08  2.482e-06  8.069e-06 -1.403e-03  2.158e-02 -1.361e-03 -1.938e-05  1.807e-02 
+  8.086e-01  2.482e-06  1.539e-01  1.690e-02 -1.252e+00  1.967e+00 -1.112e-01 -1.747e-03  1.523e+00 
+  2.378e-01  8.069e-06  1.690e-02  1.625e-01 -5.680e+00  1.458e+01 -6.030e-01 -9.921e-03  9.141e+00 
+  1.014e+02 -1.403e-03 -1.252e+00 -5.680e+00  3.862e+03 -2.358e+03  9.957e+01  1.619e+00 -1.501e+03 
+ -2.465e+03  2.158e-02  1.967e+00  1.458e+01 -2.358e+03  2.469e+04 -1.191e+03 -1.847e+01  1.720e+04 
+  1.195e+02 -1.361e-03 -1.112e-01 -6.030e-01  9.957e+01 -1.191e+03  9.275e+01  1.615e+00 -9.723e+02 
+  1.670e+00 -1.938e-05 -1.747e-03 -9.921e-03  1.619e+00 -1.847e+01  1.615e+00  1.086e+00 -1.519e+01 
+ -1.699e+03  1.807e-02  1.523e+00  9.141e+00 -1.501e+03  1.720e+04 -9.723e+02 -1.519e+01  1.442e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9
+        1  0.50156   1.000 -0.350  0.063  0.018  0.050 -0.477  0.377  0.049 -0.430
+        2  0.83802  -0.350  1.000  0.035  0.109 -0.123  0.750 -0.772 -0.102  0.822
+        3  0.13489   0.063  0.035  1.000  0.107 -0.051  0.032 -0.029 -0.004  0.032
+        4  0.33945   0.018  0.109  0.107  1.000 -0.227  0.230 -0.155 -0.024  0.189
+        5  0.31202   0.050 -0.123 -0.051 -0.227  1.000 -0.241  0.166  0.025 -0.201
+        6  0.92115  -0.477  0.750  0.032  0.230 -0.241  1.000 -0.787 -0.113  0.912
+        7  0.85610   0.377 -0.772 -0.029 -0.155  0.166 -0.787  1.000  0.161 -0.841
+        8  0.16534   0.049 -0.102 -0.004 -0.024  0.025 -0.113  0.161  1.000 -0.121
+        9  0.94293  -0.430  0.822  0.032  0.189 -0.201  0.912 -0.841 -0.121  1.000
+ **********
+ **    7 **SET ERR         0.5
+ **********
+ **********
+ **    8 **SET PRINT           1
+ **********
+ **********
+ **    9 **HESSE        4500
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-11871.6 FROM HESSE     STATUS=OK             73 CALLS         815 TOTAL
+                     EDM=0.000101401    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  bd2kstkst_yield   4.16343e+02   3.32382e+01   6.65179e-05  -1.44166e+00
+   2  bkg_exp_p   -2.90996e-03   1.90071e-04   3.30242e-04  -3.57284e+00
+   3  bs2kstkst_mu   5.36651e+03   3.92249e-01   6.24301e-04  -3.56797e-01
+   4  bs2kstkst_sigma   1.97885e+01   4.03436e-01   1.14247e-03   3.18391e+00
+   5  bs2kstkst_yield   3.10609e+03   6.22785e+01   1.02437e-05  -1.21646e+00
+   6  combbackg_yield   2.67611e+03   1.64123e+02   5.69646e-05  -1.24214e+00
+   7  part_reco_c  -3.04669e+01   1.00126e+01   3.29143e-04   4.02106e-01
+   8  part_reco_p   5.23234e+03   1.04554e+00   6.61312e-05  -3.61087e-01
+   9  partrecon_yield   4.11951e+02   1.26047e+02   9.43957e-05  -1.69925e+00
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  9    ERR DEF=0.5
+  1.105e+03 -2.355e-03  7.901e-01  1.220e-01  1.211e+02 -2.692e+03  1.341e+02  1.959e+00 -1.883e+03 
+ -2.355e-03  3.615e-08  2.694e-06  9.344e-06 -1.615e-03  2.402e-02 -1.517e-03 -2.240e-05  2.005e-02 
+  7.901e-01  2.694e-06  1.539e-01  1.711e-02 -1.269e+00  2.160e+00 -1.237e-01 -1.999e-03  1.681e+00 
+  1.220e-01  9.344e-06  1.711e-02  1.631e-01 -5.777e+00  1.574e+01 -6.781e-01 -1.150e-02  1.008e+01 
+  1.211e+02 -1.615e-03 -1.269e+00 -5.777e+00  3.879e+03 -2.552e+03  1.121e+02  1.880e+00 -1.658e+03 
+ -2.692e+03  2.402e-02  2.160e+00  1.574e+01 -2.552e+03  2.694e+04 -1.336e+03 -2.142e+01  1.902e+04 
+  1.341e+02 -1.517e-03 -1.237e-01 -6.781e-01  1.121e+02 -1.336e+03  1.019e+02  1.772e+00 -1.090e+03 
+  1.959e+00 -2.240e-05 -1.999e-03 -1.150e-02  1.880e+00 -2.142e+01  1.772e+00  1.093e+00 -1.758e+01 
+ -1.883e+03  2.005e-02  1.681e+00  1.008e+01 -1.658e+03  1.902e+04 -1.090e+03 -1.758e+01  1.589e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9
+        1  0.51696   1.000 -0.373  0.061  0.009  0.058 -0.494  0.400  0.056 -0.449
+        2  0.85096  -0.373  1.000  0.036  0.122 -0.136  0.770 -0.791 -0.113  0.837
+        3  0.13578   0.061  0.036  1.000  0.108 -0.052  0.034 -0.031 -0.005  0.034
+        4  0.34421   0.009  0.122  0.108  1.000 -0.230  0.237 -0.166 -0.027  0.198
+        5  0.31813   0.058 -0.136 -0.052 -0.230  1.000 -0.250  0.178  0.029 -0.211
+        6  0.92798  -0.494  0.770  0.034  0.237 -0.250  1.000 -0.806 -0.125  0.919
+        7  0.86996   0.400 -0.791 -0.031 -0.166  0.178 -0.806  1.000  0.168 -0.856
+        8  0.17128   0.056 -0.113 -0.005 -0.027  0.029 -0.125  0.168  1.000 -0.133
+        9  0.94837  -0.449  0.837  0.034  0.198 -0.211  0.919 -0.856 -0.133  1.000
+[#1] INFO:Minization -- RooMinimizer::optimizeConst: deactivating const optimization
+[#1] INFO:Plotting -- RooAbsPdf::plotOn(model) directly selected PDF components: (Bs2KstKst)
+[#1] INFO:Plotting -- RooAbsPdf::plotOn(model) indirectly selected PDF components: ()
+[#1] INFO:Plotting -- RooAbsPdf::plotOn(model) directly selected PDF components: (Bd2KstKst)
+[#1] INFO:Plotting -- RooAbsPdf::plotOn(model) indirectly selected PDF components: ()
+[#1] INFO:Plotting -- RooAbsPdf::plotOn(model) directly selected PDF components: (CombBackg)
+[#1] INFO:Plotting -- RooAbsPdf::plotOn(model) indirectly selected PDF components: ()
+[#1] INFO:Plotting -- RooAbsPdf::plotOn(model) directly selected PDF components: (PartRecon)
+[#1] INFO:Plotting -- RooAbsPdf::plotOn(model) indirectly selected PDF components: ()
+[#0] ERROR:InputArguments -- RooPlot::findObject(frame_Bs_MM_1e15eb80) cannot find object data
